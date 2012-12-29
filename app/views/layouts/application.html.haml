@@ -2,7 +2,7 @@
 !!!
 %html
   %head
-    %title= content_for?(:title) ? content_for(:title) : "MyChars"
+    %title= content_for?(:title) ? content_for(:title) : "Gaming-Base"
     = stylesheet_link_tag "application", :media => "all"
     - if content_for :stylesheets
       = yield :stylesheets
@@ -19,7 +19,7 @@
 
     #container
       #header
-        %h1= link_to "MyChars", main_app.dashboard_url
+        %h1= link_to "Gaming-Base", main_app.dashboard_url
         #subheader= yield :header
 
       - unless Rails.env.production?
