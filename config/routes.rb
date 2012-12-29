@@ -1,6 +1,6 @@
 Gamingbase::Application.routes.draw do
 
-  #mount Rose::Engine => "/"
+  mount Rose::Engine => "/"
   mount Ragnarok2::Engine => "/"
 
   scope ":locale" do

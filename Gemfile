@@ -54,10 +54,7 @@ gem 'jquery-rails'
 
 #games related subpages
 gem 'ragnarok2', :path => "subpages/game-ro2"
-#still in development
-group :development do
-  gem 'rose', :path => "subpages/game-rose"
-end
+gem 'rose', :path => "subpages/game-rose"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
