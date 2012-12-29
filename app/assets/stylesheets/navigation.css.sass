@@ -1,0 +1,79 @@
+$header_background: #F4FCF2
+$header_color: #66533F
+$tabs_background: #E4E4E4
+$tabs_color: #66533F
+$tabs_hover_background: #CCCCCC
+$tabs_active_background: #CCCCCC
+
+
+$subnav_background: #E4E4E4
+$subnav_color: #66533F
+$subnav_hover_background: #CCCCCC
+$subnav_active_background: #CCCCCC
+
+
+#top_navigation
+  height: 21px
+  width: 100%
+  margin-left: 170px
+  ul
+    height: 25px
+    margin: 0 30px 0 0
+    padding: 0
+    
+    li
+      display: inline
+      list-style-type: none
+      margin: 0
+      padding: 0
+      
+      a
+        float: left
+        font-size: 10pt
+        font-weight: normal
+        margin: 0px 2px 0px
+        padding: 4px 8px
+        background-color: $tabs_background
+        color: $tabs_color
+        text-decoration: none
+        border-radius: 3px 3px 0px 0px
+        &:hover
+          background-color: $tabs_hover_background
+      
+      a.selected
+        background-color: $tabs_active_background
+
+        color: $header_color
+        font-weight: bold
+      
+#sub_navigation
+  float: left
+  width: 160px
+  padding-bottom: 20px
+
+  li
+    list-style-type: none
+    margin: 0
+    padding: 0
+     
+    a
+      float: right
+      font-size: 10pt
+      font-weight: normal
+      margin: 0
+      padding: 2px 8px 4px
+      margin: 2px 0px 2px
+      background-color: $subnav_background
+      color: $subnav_color
+      text-decoration: none
+      border-radius: 3px 0px 0px 3px
+      width: 100%
+      text-align: right
+        
+      &:hover
+        background-color: $subnav_hover_background
+          
+    a.selected
+      background-color: $subnav_active_background
+      color: $subnav_color
+      font-weight: bold

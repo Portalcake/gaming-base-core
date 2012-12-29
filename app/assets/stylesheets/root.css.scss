@@ -1,0 +1,256 @@
+@import "corporate";
+
+html, body {
+  height:100%;
+  padding: 7px 10px; }
+
+body {
+  background: none repeat scroll 0 0 #F7F7F7;
+  color: #111111;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 10px;
+  text-align: left;
+  line-height: 13px; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #334455;
+  font-weight: bold; }
+h1 {
+  font-size:120%; }
+h2 {
+  font-size:110%; }
+
+a {
+  color: #4A630F;
+  text-decoration: none;
+  &:hover {
+    color: #AA0000; } }
+  
+input, textarea, select {
+  border: 1px solid #CCCCCC;
+  background: none repeat scroll 0 0 #f2f2f2;
+  color: #333333 }
+
+#header {
+  margin: 10px 0px 20px 0px;
+  & #subheader {
+    font-size:120%;
+  }
+  & h1 {
+    font-size: 300%;
+    margin:10px 0px;
+    & a {
+      color: inherit; } } }
+
+#login {
+  float:right;
+  text-align: right; }
+
+#left_page_wrapper {
+  width: 160px;
+  float: left
+
+}
+
+#left_page_boxes {
+  & > div {
+    width: 119px;
+    float: left;
+    padding: 2px 8px 4px;
+    margin: 2px 0px 2px 25px;
+    border-radius: 3px 0px 0px 3px;
+    background-color: #E4E4E4;
+    font-weight: normal;
+    & .box_title {
+      text-align: right;
+    }
+  }
+  & #game_locale_chooser, & #locale_chooser {
+    float:right;
+    & .flag {
+      float:right;
+      height:11px;
+      margin-left:3px;
+      padding-top:2px;
+      &.current {
+        padding:2px;
+        background: none repeat scroll 0 0 #4A630F;
+      }
+    }
+  }
+}
+
+.icon {
+  background-position: 0 50%;
+  background-repeat: no-repeat;
+  padding-bottom: 1px;
+  padding-left: 17px;
+  padding-top: 2px;
+  &.icon-undo {
+    background-image: url("icons/grayscale/arrow_undo.png");
+    &:hover {
+      background-image: url("icons/colorized/arrow_undo.png"); } }
+  &.icon-create {
+    background-image: url("icons/grayscale/add.png");
+    &:hover {
+      background-image: url("icons/colorized/add.png"); } }
+  &.icon-edit {
+    background-image: url("icons/grayscale/image_edit.png");
+    &:hover {
+      background-image: url("icons/colorized/image_edit.png"); } }
+  &.icon-show {
+    background-image: url("icons/grayscale/magnifier.png");
+    &:hover {
+      background-image: url("icons/colorized/magnifier.png"); } }
+  &.icon-folder {
+    background-image: url("icons/grayscale/folder.png");
+    &:hover {
+      background-image: url("icons/colorized/folder.png"); } }
+  &.image-destroy {
+    background-image: url("icons/grayscale/image_delete.png");
+    &:hover {
+      color: $red;
+      background-image: url("icons/colorized/image_delete.png"); } }
+  &.folder-destroy {
+    background-image: url("icons/grayscale/folder_delete.png");
+    &:hover {
+      color: $red;
+      background-image: url("icons/colorized/folder_delete.png"); } } }
+
+div#content-wrapper {
+  padding-bottom:50px;
+  & #content {
+    padding: 8px;
+    border-style: solid;
+    border-color: #CCCCCC;
+    border-width: 1px;
+    border-radius: 3px;
+    margin-left: 160px;
+    & h1, h2 {
+      padding-bottom: 5px; }
+    & h3, h4, h5, h6 {
+      padding-bottom: 2px;
+    } } }
+
+.odd, .even {
+  padding: 2px;
+}
+.odd {
+  background-color: #ddd;
+}
+.even {
+  background-color: #eee;
+}
+
+.error, .notice, #notice, #error {
+  background-color: $white;
+  padding:2px 5px 2px 9px;
+  margin-bottom:10px; }
+.notice, #notice {
+  color: green; }
+.error, #error {
+  color: $red; }
+
+.field_with_errors {
+  display: inline;
+  & input {
+    border: 1px $red solid; } }
+
+#error_explanation {
+  border: 1px solid $red;
+  margin: 3px 0px 7px 0px;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 12px;
+    background-color: $red;
+    color: #fff;
+    text-shadow:none; }
+  ul {
+    padding: 0px 5px 5px 5px;
+    & li {
+      font-size: 12px;
+      list-style: none; } } }
+
+
+::-webkit-input-placeholder {
+    color:    #999;
+}
+:-moz-placeholder {
+    color:    #999;
+}
+:-ms-input-placeholder {
+        color:    #999;
+}
+
+
+.development_box {
+  padding-top: 10px;
+  span.attribute {
+    width:200px;
+    float:left;
+  }
+}
+
+span.booleanize_false {
+  color: gray;
+  text-decoration: line-through;
+}
+span.booleanize_true {
+  color: green;
+}
+
+
+.model_listing {
+  & .model_icon {
+    float:left;
+    display:block;
+    padding-right:5px;
+  }
+  & span {
+    &.model_type, &.additional_abilities, &.required_abilities {
+      color: #999999;
+    }
+  }
+}
+
+.model_details {
+  & .description {
+    padding-bottom: 15px;
+  }
+  & h2 {
+    padding:0px;
+    margin:0px;
+  }
+  &.quest h2 {
+    min-height:21px;
+  }
+  &.citizen h2 {
+    min-height:19px;
+  }
+  & .model_icon {
+    float:left;
+    padding-right:5px;
+  }
+}
+
+.box {
+  padding-bottom: 5px;
+  position: relative;
+  z-index: 1;  
+  &:before {
+    border-top: 1px solid #DDDDDD;
+    content:"";
+    margin: 0 auto;
+    position: absolute;
+    top: 7px; left: 0; right: 0; bottom: 0;
+    width: 95%;
+    z-index: -1;
+  }
+  & span.title {
+    background: #F7F7F7;
+    font-weight: bold;
+    padding-right: 5px;
+  }
+}

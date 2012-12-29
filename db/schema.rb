@@ -1,0 +1,1377 @@
+# encoding: UTF-8
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended to check this file into your version control system.
+
+ActiveRecord::Schema.define(:version => 20121228093232) do
+
+  create_table "games", :force => true do |t|
+    t.string   "name",        :default => "",    :null => false
+    t.string   "token",       :default => "",    :null => false
+    t.boolean  "maintenance", :default => false, :null => false
+    t.boolean  "published",   :default => false, :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "games", ["token"], :name => "index_games_on_token", :unique => true
+
+  create_table "languages", :force => true do |t|
+    t.string "tld",  :limit => 2,  :default => "", :null => false
+    t.string "name", :limit => 64, :default => "", :null => false
+  end
+
+  create_table "ragnarok2_citizen_items", :force => true do |t|
+    t.integer  "citizen_id", :limit => 8, :default => 0, :null => false
+    t.integer  "item_id",    :limit => 8, :default => 0, :null => false
+    t.integer  "max",                     :default => 1, :null => false
+    t.integer  "buy_type",                :default => 0, :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "ragnarok2_citizen_items", ["citizen_id"], :name => "index_ragnarok2_citizen_items_on_citizen_id"
+  add_index "ragnarok2_citizen_items", ["item_id"], :name => "index_ragnarok2_citizen_items_on_item_id"
+
+  create_table "ragnarok2_citizens", :force => true do |t|
+    t.integer  "citizen_id",                  :limit => 8, :default => 0, :null => false
+    t.integer  "string_name_id",              :limit => 8
+    t.integer  "nationenable"
+    t.integer  "string_job_name_id",          :limit => 8
+    t.integer  "camp"
+    t.integer  "legion"
+    t.integer  "min_level"
+    t.integer  "max_level"
+    t.integer  "faction"
+    t.integer  "closeup"
+    t.integer  "direction_lock"
+    t.integer  "family"
+    t.integer  "grade"
+    t.integer  "race"
+    t.integer  "growth_type"
+    t.integer  "element"
+    t.integer  "nature_1"
+    t.integer  "nature_2"
+    t.integer  "nature_3"
+    t.integer  "radius"
+    t.integer  "shape_type"
+    t.integer  "corpse_disappear_time"
+    t.integer  "drop_id"
+    t.integer  "base_exp_multiplier"
+    t.integer  "lisence_exp_multiplier"
+    t.integer  "resist_point"
+    t.integer  "water_resist"
+    t.integer  "earth_resist"
+    t.integer  "fire_resist"
+    t.integer  "wind_resist"
+    t.integer  "poison_resist"
+    t.integer  "saint_resist"
+    t.integer  "dark_resist"
+    t.integer  "psychokinesis_resist"
+    t.integer  "death_resist"
+    t.integer  "walk_speed"
+    t.integer  "run_speed"
+    t.integer  "run_correction"
+    t.integer  "idle_move_rate"
+    t.integer  "min_move_action_time"
+    t.integer  "max_move_action_time"
+    t.integer  "idle_action_rate"
+    t.integer  "min_idle_action_time"
+    t.integer  "max_idle_action_time"
+    t.integer  "monologue_action_rate"
+    t.integer  "string_monologue_id"
+    t.integer  "min_monologue_action_time"
+    t.integer  "max_monologue_action_time"
+    t.integer  "task_action_rate"
+    t.integer  "min_task_action_time"
+    t.integer  "max_task_action_time"
+    t.integer  "function_type_1"
+    t.integer  "function_id_1"
+    t.integer  "function_type_2"
+    t.integer  "function_id_2"
+    t.integer  "function_type_3"
+    t.integer  "function_id_3"
+    t.integer  "npc_voice_type"
+    t.integer  "invincibility"
+    t.integer  "spawn_freeze_time"
+    t.integer  "patience"
+    t.integer  "pain_grade"
+    t.integer  "threat_reaction_point"
+    t.integer  "aggro_target_selection_type"
+    t.integer  "reaction_bound"
+    t.integer  "follow_groupid"
+    t.integer  "follow_group_captain"
+    t.integer  "follow_pc"
+    t.integer  "follow_distance"
+    t.integer  "attack_range"
+    t.integer  "attack_execution_time"
+    t.integer  "attack_cooldown_time"
+    t.integer  "trace_bound"
+    t.integer  "spreadaggro"
+    t.integer  "spreadaggrotype"
+    t.integer  "battle_start"
+    t.integer  "attack_time"
+    t.integer  "steal_groupid"
+    t.integer  "pet_id"
+    t.integer  "afterdeath_funcobject_id"
+    t.integer  "attacklimit"
+    t.integer  "skillgroup"
+    t.integer  "ability_1"
+    t.integer  "ability_2"
+    t.integer  "ability_3"
+    t.integer  "ability_4"
+    t.integer  "ability_5"
+    t.integer  "legion_inheritance"
+    t.integer  "looting_mode"
+    t.integer  "personal_reward"
+    t.integer  "pvp_point"
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+  end
+
+  add_index "ragnarok2_citizens", ["citizen_id"], :name => "index_ragnarok2_citizens_on_citizen_id", :unique => true
+
+  create_table "ragnarok2_item_categories", :force => true do |t|
+    t.integer  "category_id",                       :default => 0, :null => false
+    t.string   "name_fallback"
+    t.integer  "string_category_name", :limit => 8
+    t.integer  "high_category"
+    t.integer  "medium_category"
+    t.integer  "low_category"
+    t.integer  "iconindex"
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+    t.integer  "items_count",                       :default => 0, :null => false
+  end
+
+  create_table "ragnarok2_items", :force => true do |t|
+    t.integer  "item_id",                 :limit => 8, :default => 0, :null => false
+    t.integer  "name_fallback"
+    t.integer  "nationenable"
+    t.integer  "item_type"
+    t.integer  "item_category"
+    t.integer  "grade"
+    t.integer  "price_buy"
+    t.integer  "stack_max"
+    t.integer  "require_level"
+    t.integer  "require_sex"
+    t.integer  "require_job"
+    t.integer  "equip_type"
+    t.integer  "equip_slot"
+    t.integer  "equip_slot_overlap"
+    t.integer  "armor_type"
+    t.integer  "bag_size"
+    t.integer  "bind_type"
+    t.integer  "durability"
+    t.integer  "set_id"
+    t.integer  "randomset_id"
+    t.integer  "socket_max"
+    t.integer  "effect_id_1"
+    t.integer  "skill_id_1"
+    t.integer  "theme_id"
+    t.boolean  "is_drop"
+    t.boolean  "is_deposit"
+    t.boolean  "is_destruct"
+    t.boolean  "is_sell"
+    t.boolean  "is_trade"
+    t.boolean  "is_compose"
+    t.integer  "high_category"
+    t.integer  "medium_category"
+    t.integer  "low_category"
+    t.integer  "string_item_name",        :limit => 8
+    t.integer  "string_item_description", :limit => 8
+    t.string   "mesh"
+    t.string   "mesh2"
+    t.integer  "default_fx"
+    t.integer  "default_color"
+    t.integer  "color_variation"
+    t.integer  "collisiontype_id"
+    t.string   "icon"
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
+    t.integer  "category_id"
+  end
+
+  add_index "ragnarok2_items", ["item_id"], :name => "index_ragnarok2_items_on_item_id", :unique => true
+
+  create_table "ragnarok2_maps", :force => true do |t|
+    t.integer  "map_id",       :default => 0, :null => false
+    t.string   "name"
+    t.string   "map_file"
+    t.integer  "map_type"
+    t.integer  "max_count"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "z"
+    t.integer  "is_pk"
+    t.integer  "is_mount"
+    t.integer  "is_attack"
+    t.integer  "is_skill"
+    t.integer  "is_chat_log"
+    t.integer  "base_exp"
+    t.integer  "effect_id"
+    t.integer  "contents_ver"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "ragnarok2_maps", ["map_id"], :name => "index_ragnarok2_maps_on_map_id", :unique => true
+
+  create_table "ragnarok2_merchant_infos", :force => true do |t|
+    t.integer  "entry_id",                          :default => 0, :null => false
+    t.integer  "merchant_function_id", :limit => 8, :default => 0, :null => false
+    t.integer  "buy_type",                          :default => 0, :null => false
+    t.integer  "item_id",              :limit => 8, :default => 0, :null => false
+    t.integer  "max",                               :default => 1, :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
+
+  add_index "ragnarok2_merchant_infos", ["entry_id"], :name => "index_ragnarok2_merchant_infos_on_entry_id", :unique => true
+  add_index "ragnarok2_merchant_infos", ["merchant_function_id"], :name => "index_ragnarok2_merchant_infos_on_merchant_function_id"
+
+  create_table "ragnarok2_pro_jobs", :force => true do |t|
+    t.integer  "pro_job_id",                              :default => 0, :null => false
+    t.string   "protypename"
+    t.integer  "string_protype",             :limit => 8
+    t.string   "proskillname"
+    t.integer  "string_proskill"
+    t.integer  "string_trans_systemmessage"
+    t.string   "trans_spirit_fx_category"
+    t.integer  "start_fx1"
+    t.integer  "loop_fx1"
+    t.integer  "end_fx1"
+    t.integer  "start_fx2"
+    t.integer  "loop_fx2"
+    t.integer  "end_fx2"
+    t.integer  "start_fx3"
+    t.integer  "loop_fx3"
+    t.integer  "end_fx3"
+    t.integer  "trans_buff_skill_id1",       :limit => 8
+    t.integer  "trans_buff_skill_id2",       :limit => 8
+    t.integer  "trans_buff_skill_id3",       :limit => 8
+    t.integer  "trans_skill_id_1"
+    t.integer  "trans_skill_id_2"
+    t.integer  "trans_skill_id_3"
+    t.integer  "trans_skill_id_4"
+    t.integer  "trans_skill_id_5"
+    t.integer  "guide_quest_id1",            :limit => 8
+    t.integer  "guide_quest_id2",            :limit => 8
+    t.integer  "guide_quest_id3",            :limit => 8
+    t.integer  "guide_message_id1"
+    t.integer  "guide_message_id2"
+    t.integer  "guide_message_id3"
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
+  end
+
+  add_index "ragnarok2_pro_jobs", ["pro_job_id"], :name => "index_ragnarok2_pro_jobs_on_pro_job_id", :unique => true
+
+  create_table "ragnarok2_quest_citizens", :force => true do |t|
+    t.integer "citizen_id", :limit => 8
+    t.integer "quest_id",   :limit => 8
+    t.boolean "is_start"
+  end
+
+  add_index "ragnarok2_quest_citizens", ["citizen_id"], :name => "index_ragnarok2_quest_citizens_on_citizen_id"
+  add_index "ragnarok2_quest_citizens", ["quest_id"], :name => "index_ragnarok2_quest_citizens_on_quest_id"
+
+  create_table "ragnarok2_quest_infos", :force => true do |t|
+    t.integer  "quest_id",           :limit => 8, :default => 0, :null => false
+    t.integer  "area_id_1"
+    t.integer  "complete_target_1"
+    t.integer  "target_id_1",        :limit => 8
+    t.integer  "target_x_1"
+    t.integer  "target_y_1"
+    t.integer  "area_id_2"
+    t.integer  "complete_target_2"
+    t.integer  "target_id_2",        :limit => 8
+    t.integer  "target_x_2"
+    t.integer  "target_y_2"
+    t.integer  "area_id_3"
+    t.integer  "complete_target_3"
+    t.integer  "target_id_3",        :limit => 8
+    t.integer  "target_x_3"
+    t.integer  "target_y_3"
+    t.integer  "area_id_4"
+    t.integer  "complete_target_4"
+    t.integer  "target_id_4",        :limit => 8
+    t.integer  "target_x_4"
+    t.integer  "target_y_4"
+    t.integer  "area_id_5"
+    t.integer  "complete_target_5"
+    t.integer  "target_id_5",        :limit => 8
+    t.integer  "target_x_5"
+    t.integer  "target_y_5"
+    t.integer  "area_id_6"
+    t.integer  "complete_target_6"
+    t.integer  "target_id_6",        :limit => 8
+    t.integer  "target_x_6"
+    t.integer  "target_y_6"
+    t.integer  "area_id_7"
+    t.integer  "complete_target_7"
+    t.integer  "target_id_7",        :limit => 8
+    t.integer  "target_x_7"
+    t.integer  "target_y_7"
+    t.integer  "area_id_8"
+    t.integer  "complete_target_8"
+    t.integer  "target_id_8",        :limit => 8
+    t.integer  "target_x_8"
+    t.integer  "target_y_8"
+    t.integer  "area_id_9"
+    t.integer  "complete_target_9"
+    t.integer  "target_id_9",        :limit => 8
+    t.integer  "target_x_9"
+    t.integer  "target_y_9"
+    t.integer  "area_id_10"
+    t.integer  "complete_target_10"
+    t.integer  "target_id_10",       :limit => 8
+    t.integer  "target_x_10"
+    t.integer  "target_y_10"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "ragnarok2_quest_infos", ["quest_id"], :name => "index_ragnarok2_quest_infos_on_quest_id"
+
+  create_table "ragnarok2_quest_item_rewards", :force => true do |t|
+    t.integer  "quest_id",   :limit => 8
+    t.integer  "item_id",    :limit => 8
+    t.integer  "amount",                  :default => 0, :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "ragnarok2_quest_item_rewards", ["item_id"], :name => "index_ragnarok2_quest_item_rewards_on_item_id"
+  add_index "ragnarok2_quest_item_rewards", ["quest_id"], :name => "index_ragnarok2_quest_item_rewards_on_quest_id"
+
+  create_table "ragnarok2_quests", :force => true do |t|
+    t.integer  "quest_id",             :limit => 8, :default => 0, :null => false
+    t.integer  "quest_type"
+    t.integer  "area_id"
+    t.integer  "start_type"
+    t.integer  "start_type_id",        :limit => 8
+    t.integer  "reward_npc_id",        :limit => 8
+    t.integer  "recommand_base_level"
+    t.integer  "min_base_level"
+    t.integer  "max_base_level"
+    t.integer  "pc_job"
+    t.integer  "pc_projob"
+    t.integer  "min_projob_level"
+    t.integer  "max_projob_level"
+    t.integer  "min_khara_point"
+    t.integer  "max_khara_point"
+    t.integer  "daily_quest"
+    t.integer  "quest_frequency"
+    t.integer  "quest_term"
+    t.integer  "giveup"
+    t.integer  "party"
+    t.integer  "quest_mark"
+    t.integer  "need_quest_id"
+    t.integer  "need_quest_status"
+    t.integer  "next_quest_id"
+    t.integer  "prohibition_quest_id"
+    t.integer  "need_start_time"
+    t.integer  "need_end_time"
+    t.integer  "need_mail_id"
+    t.integer  "quest_flag"
+    t.integer  "waiting_time"
+    t.integer  "reward_auto"
+    t.integer  "reward_money"
+    t.integer  "reward_exp"
+    t.integer  "reward_projob_exp"
+    t.integer  "reward_khara_point"
+    t.integer  "reward_type"
+    t.integer  "reward_item_id1",      :limit => 8
+    t.integer  "reward_item_count1"
+    t.integer  "reward_item_id2",      :limit => 8
+    t.integer  "reward_item_count2"
+    t.integer  "reward_item_id3",      :limit => 8
+    t.integer  "reward_item_count3"
+    t.integer  "reward_item_id4",      :limit => 8
+    t.integer  "reward_item_count4"
+    t.integer  "reward_item_id5",      :limit => 8
+    t.integer  "reward_item_count5"
+    t.integer  "reward_skill_id",      :limit => 8
+    t.integer  "condition_type"
+    t.integer  "condition_value1"
+    t.integer  "condition_value2"
+    t.integer  "condition_value3"
+    t.integer  "error_msg_id",         :limit => 8
+    t.integer  "action_sequence"
+    t.integer  "active_type"
+    t.integer  "action_type"
+    t.integer  "action_value1"
+    t.integer  "action_value2"
+    t.integer  "action_value3"
+    t.integer  "action_value4"
+    t.integer  "action_value5"
+    t.integer  "complete_type"
+    t.integer  "complete_type_value1"
+    t.integer  "complete_type_value2"
+    t.integer  "complete_type_value3"
+    t.integer  "complete_type_value4"
+    t.integer  "complete_type_value5"
+    t.integer  "complete_desc_id",     :limit => 8
+    t.integer  "trace_id"
+    t.integer  "fail_type"
+    t.integer  "fail_type_value1"
+    t.integer  "fail_type_value2"
+    t.integer  "fail_type_value3"
+    t.integer  "fail_type_value4"
+    t.integer  "fail_type_value5"
+    t.integer  "fail_desc_id"
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
+
+  add_index "ragnarok2_quests", ["quest_id"], :name => "index_ragnarok2_quests_on_quest_id", :unique => true
+
+  create_table "ragnarok2_translations_citizen_descriptions", :force => true do |t|
+    t.integer  "citizen_id",  :limit => 8, :default => 0, :null => false
+    t.string   "translation"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_translations_citizen_descriptions", ["citizen_id"], :name => "cid", :unique => true
+
+  create_table "ragnarok2_translations_citizen_job_names", :force => true do |t|
+    t.integer  "citizen_id",  :limit => 8, :default => 0, :null => false
+    t.string   "translation"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_translations_citizen_job_names", ["citizen_id"], :name => "cid", :unique => true
+
+  create_table "ragnarok2_translations_citizen_names", :force => true do |t|
+    t.integer  "citizen_id",  :limit => 8, :default => 0, :null => false
+    t.string   "translation"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_translations_citizen_names", ["citizen_id"], :name => "cid", :unique => true
+
+  create_table "ragnarok2_translations_item_categories", :force => true do |t|
+    t.integer  "item_id",     :limit => 8, :default => 0, :null => false
+    t.string   "translation"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_translations_item_categories", ["item_id"], :name => "iid", :unique => true
+
+  create_table "ragnarok2_translations_item_descriptions", :force => true do |t|
+    t.integer  "item_id",     :limit => 8, :default => 0, :null => false
+    t.string   "translation"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_translations_item_descriptions", ["item_id"], :name => "iid", :unique => true
+
+  create_table "ragnarok2_translations_item_names", :force => true do |t|
+    t.integer  "item_id",     :limit => 8, :default => 0, :null => false
+    t.string   "translation"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_translations_item_names", ["item_id"], :name => "iid", :unique => true
+
+  create_table "ragnarok2_translations_job_names", :force => true do |t|
+    t.integer  "job_id",      :limit => 8, :default => 0, :null => false
+    t.string   "translation"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_translations_job_names", ["job_id"], :name => "jid", :unique => true
+
+  create_table "ragnarok2_translations_quests", :force => true do |t|
+    t.integer  "quest_id",      :limit => 8, :default => 0, :null => false
+    t.string   "dialog_title"
+    t.string   "quest_title"
+    t.text     "summary_text"
+    t.text     "start_text"
+    t.text     "start_demand"
+    t.text     "retry_text"
+    t.text     "finish_text"
+    t.text     "finish_demand"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  add_index "ragnarok2_translations_quests", ["quest_id"], :name => "index_ragnarok2_translations_quests_on_quest_id", :unique => true
+
+  create_table "roles", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
+
+  create_table "rose_citizens", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "npc_filename"
+    t.integer  "walking_speed"
+    t.integer  "running_speed"
+    t.integer  "npc_size"
+    t.integer  "weapon_id_right"
+    t.integer  "weapon_id_left"
+    t.integer  "level"
+    t.integer  "hp"
+    t.integer  "atk"
+    t.integer  "accuracy"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "flee"
+    t.integer  "atk_speed"
+    t.integer  "magic"
+    t.integer  "ai_type"
+    t.integer  "exp"
+    t.integer  "drop_items"
+    t.integer  "money"
+    t.integer  "drop_item"
+    t.integer  "trade_tab1"
+    t.integer  "trade_tab2"
+    t.integer  "trade_tab3"
+    t.integer  "trade_tab4"
+    t.integer  "target_type"
+    t.integer  "atk_range"
+    t.integer  "character_type"
+    t.integer  "texture_type"
+    t.integer  "icon_number",                :default => 0,  :null => false
+    t.integer  "general_sound_effect"
+    t.integer  "attacking_sound_effect"
+    t.integer  "attacked_sound_effect"
+    t.integer  "atk_effect"
+    t.integer  "dying_effect"
+    t.integer  "dying_sound_effect"
+    t.integer  "death_event_targets"
+    t.integer  "glow_effect"
+    t.string   "npc_description"
+    t.string   "death_event_triggers"
+    t.integer  "hp_gauge_bar"
+    t.integer  "model_attribute"
+    t.integer  "singleton_npc"
+    t.integer  "skill_distance"
+    t.integer  "team_number"
+    t.integer  "taunt_immunity"
+    t.integer  "force_death_animation"
+    t.integer  "hide_nameplate"
+    t.integer  "decloak_chance_percent"
+    t.integer  "interactive_object_type"
+    t.integer  "interact_event_target"
+    t.string   "interact_event_trigger"
+    t.string   "interact_condition_trigger"
+    t.integer  "self_skill_number"
+    t.integer  "visibility"
+    t.integer  "hp_gauge_visibility"
+    t.integer  "crash"
+    t.integer  "crash_index"
+    t.integer  "crash_box_x"
+    t.integer  "crash_box_y"
+    t.integer  "crash_box_z"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_engine_parts", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "model_filename"
+    t.integer  "item_slot"
+    t.integer  "item_restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "part_type"
+    t.integer  "part_version"
+    t.integer  "avatar_board"
+    t.integer  "required_skill"
+    t.integer  "required_skill_level"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "durability"
+    t.integer  "slope"
+    t.integer  "maximum_fuel"
+    t.integer  "fuel_consumption"
+    t.integer  "movement_speed"
+    t.integer  "terrain"
+    t.integer  "atk_range"
+    t.integer  "atk"
+    t.integer  "atk_speed"
+    t.integer  "redundancy"
+    t.integer  "seating_capacity"
+    t.integer  "behavior_type"
+    t.integer  "avatar_action_type"
+    t.integer  "model_effect"
+    t.integer  "sound_effect"
+    t.integer  "dying_effect"
+    t.integer  "dying_sound_effect"
+    t.integer  "destruction_effect"
+    t.integer  "destruction_sound_effect"
+    t.integer  "idle_sfx"
+    t.integer  "movement_effect"
+    t.integer  "movment_sfx"
+    t.integer  "primary_effect"
+    t.integer  "attack_sfx"
+    t.integer  "damage_effect"
+    t.integer  "hit_sfx"
+    t.integer  "bullet_effect"
+    t.integer  "p1"
+    t.integer  "p2"
+    t.integer  "p3"
+    t.integer  "p4"
+    t.integer  "p5"
+    t.integer  "p6"
+    t.integer  "p7"
+    t.integer  "p8"
+    t.integer  "firing_point_1"
+    t.integer  "firing_point_2"
+    t.integer  "firing_point_3"
+    t.integer  "cart_gauge"
+    t.integer  "occupations"
+    t.integer  "magic_damage"
+    t.integer  "ability"
+    t.integer  "break"
+    t.integer  "pat_class"
+    t.integer  "planet_restriction"
+    t.integer  "damage_calculation_type"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_equipment_backs", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "male_model"
+    t.integer  "item_restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "required_job_1_id"
+    t.integer  "required_job_2_id"
+    t.integer  "required_job_3_id"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "required_ability_2_id"
+    t.integer  "required_ability_2_value"
+    t.integer  "requirements_1"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "requierements_2"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "durability"
+    t.integer  "dodge"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "movement_speed"
+    t.integer  "name_prefix_id"
+    t.integer  "costume_bonus_flag"
+    t.integer  "product"
+    t.integer  "refine"
+    t.integer  "break"
+    t.integer  "pvp_atk"
+    t.integer  "pvp_def"
+    t.integer  "pvm_atk"
+    t.integer  "pvm_def"
+    t.string   "model_attribute"
+    t.integer  "rare_type"
+    t.integer  "item_set_id"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_equipment_bodies", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "male_model"
+    t.string   "female_model"
+    t.integer  "item_restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "required_job_1_id"
+    t.integer  "required_job_2_id"
+    t.integer  "required_job_3_id"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "required_ability_2_id"
+    t.integer  "required_ability_2_value"
+    t.integer  "requirements_1"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "requierements_2"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "durability"
+    t.integer  "dodge"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "movement_speed"
+    t.integer  "name_prefix_id"
+    t.integer  "costume_bonus_flag"
+    t.integer  "product"
+    t.integer  "refine"
+    t.integer  "break"
+    t.integer  "pvp_atk"
+    t.integer  "pvp_def"
+    t.integer  "pvm_atk"
+    t.integer  "pvm_def"
+    t.string   "model_attribute"
+    t.integer  "rare_type"
+    t.integer  "item_set_id"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_equipment_boots", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "male_model"
+    t.string   "female_model"
+    t.integer  "item_restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "required_job_1_id"
+    t.integer  "required_job_2_id"
+    t.integer  "required_job_3_id"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "required_ability_2_id"
+    t.integer  "required_ability_2_value"
+    t.integer  "requirements_1"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "requierements_2"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "durability"
+    t.integer  "dodge"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "movement_speed"
+    t.integer  "name_prefix_id"
+    t.integer  "costume_bonus_flag"
+    t.integer  "product"
+    t.integer  "refine"
+    t.integer  "break"
+    t.integer  "pvp_atk"
+    t.integer  "pvp_def"
+    t.integer  "pvm_atk"
+    t.integer  "pvm_def"
+    t.string   "model_attribute"
+    t.integer  "rare_type"
+    t.integer  "item_set_id"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_equipment_gloves", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "male_model"
+    t.string   "female_model"
+    t.integer  "item_restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "required_job_1_id"
+    t.integer  "required_job_2_id"
+    t.integer  "required_job_3_id"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "required_ability_2_id"
+    t.integer  "required_ability_2_value"
+    t.integer  "requirements_1"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "requierements_2"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "durability"
+    t.integer  "dodge"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "material_type"
+    t.integer  "name_prefix_id"
+    t.integer  "costume_bonus_flag"
+    t.integer  "product"
+    t.integer  "refine"
+    t.integer  "break"
+    t.integer  "pvp_atk"
+    t.integer  "pvp_def"
+    t.integer  "pvm_atk"
+    t.integer  "pvm_def"
+    t.string   "model_attribute"
+    t.integer  "rare_type"
+    t.integer  "item_set_id"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_equipment_headgears", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "male_model"
+    t.string   "female_model"
+    t.integer  "item_restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "required_job_1_id"
+    t.integer  "required_job_2_id"
+    t.integer  "required_job_3_id"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "required_ability_2_id"
+    t.integer  "required_ability_2_value"
+    t.integer  "requirements_1"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "requierements_2"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "durability"
+    t.integer  "dodge"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "male_hair_option"
+    t.integer  "female_hair_option"
+    t.integer  "costume_bonus_flag"
+    t.integer  "product"
+    t.integer  "refine"
+    t.integer  "break"
+    t.integer  "pvp_atk"
+    t.integer  "pvp_def"
+    t.integer  "pvm_atk"
+    t.integer  "pvm_def"
+    t.string   "model_attribute"
+    t.integer  "rare_type"
+    t.integer  "item_set_id"
+    t.integer  "name_prefix_id"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_equipment_jewels", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.integer  "item_restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "required_job_1_id"
+    t.integer  "required_job_2_id"
+    t.integer  "required_job_3_id"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "required_ability_2_id"
+    t.integer  "required_ability_2_value"
+    t.integer  "requirements_1"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "requierements_2"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "durability"
+    t.integer  "dodge"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "product"
+    t.integer  "refine"
+    t.integer  "break"
+    t.integer  "pvp_atk"
+    t.integer  "pvp_def"
+    t.integer  "pvm_atk"
+    t.integer  "pvm_def"
+    t.string   "model_attribute"
+    t.integer  "rare_type"
+    t.integer  "item_set_id"
+    t.integer  "name_prefix_id"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_equipment_masks", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "male_model"
+    t.string   "female_model"
+    t.integer  "item_restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "required_job_1_id"
+    t.integer  "required_job_2_id"
+    t.integer  "required_job_3_id"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "required_ability_2_id"
+    t.integer  "required_ability_2_value"
+    t.integer  "requirement_union1"
+    t.integer  "additional_increase_stat1"
+    t.integer  "additional_increase_value1"
+    t.integer  "requirement_union2"
+    t.integer  "additional_increase_stat2"
+    t.integer  "additional_increase_value2"
+    t.integer  "durability"
+    t.integer  "dodge"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "texture"
+    t.integer  "product"
+    t.integer  "refine"
+    t.integer  "break"
+    t.integer  "pvp_atk"
+    t.integer  "pvp_def"
+    t.integer  "pvm_atk"
+    t.integer  "pvm_def"
+    t.string   "model_attribute"
+    t.integer  "rare_type"
+    t.integer  "item_set_id"
+    t.integer  "name_prefix_id"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_gems", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.integer  "item_restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "socket_graphic"
+    t.integer  "glow_effect"
+    t.integer  "option_percent_1"
+    t.integer  "option_percent_2"
+    t.integer  "decomposition_numbers"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_item_abilities", :force => true do |t|
+    t.integer "item_attributable_id"
+    t.string  "item_attributable_type"
+    t.integer "ability_id",             :default => 0,     :null => false
+    t.integer "value",                  :default => 0,     :null => false
+    t.boolean "required",               :default => false, :null => false
+  end
+
+  add_index "rose_items_item_abilities", ["item_attributable_type", "item_attributable_id", "ability_id", "required"], :name => "taa", :unique => true
+  add_index "rose_items_item_abilities", ["required"], :name => "index_rose_items_item_abilities_on_required"
+
+  create_table "rose_items_materials", :force => true do |t|
+    t.string   "name",                         :default => "", :null => false
+    t.integer  "use_Limit"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_number"
+    t.integer  "sound_fx"
+    t.integer  "crafting_number"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material"
+    t.integer  "crafting_difficulty"
+    t.integer  "crafting_requiered_item_type"
+    t.integer  "bullet_type"
+    t.integer  "refine_bonus"
+    t.string   "item_description"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
+  create_table "rose_items_quest_items", :force => true do |t|
+    t.string   "name",             :default => "", :null => false
+    t.integer  "item_type_id"
+    t.integer  "icon_number"
+    t.integer  "quest_image"
+    t.string   "quest_id"
+    t.string   "item_description"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "rose_items_weapons_main_weapons", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "model_filename"
+    t.integer  "restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_item"
+    t.integer  "equipping_sound_effect"
+    t.integer  "crafting_id"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material_id"
+    t.integer  "crafting_difficulty"
+    t.integer  "required_job_1_id"
+    t.integer  "required_job_2_id"
+    t.integer  "required_job_3_id"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "required_ability_2_id"
+    t.integer  "required_ability_2_value"
+    t.integer  "requirement_union1"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "requirement_union2"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "durability"
+    t.integer  "accuracy"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "range"
+    t.integer  "motion_type"
+    t.integer  "atk"
+    t.integer  "atk_speed"
+    t.integer  "magic"
+    t.integer  "effect_type"
+    t.integer  "basic_effect"
+    t.integer  "start_sound_effect"
+    t.integer  "shooting_sound_effect"
+    t.integer  "hitting_sound_effect"
+    t.integer  "gem_effect_location"
+    t.integer  "upgrade_no"
+    t.integer  "tier_grade"
+    t.integer  "disassembly_no"
+    t.integer  "pvp_atk"
+    t.integer  "pvp_def"
+    t.integer  "pvm_atk"
+    t.integer  "pvm_def"
+    t.string   "model_attribute"
+    t.integer  "number_of_gems"
+    t.integer  "item_set_id"
+    t.integer  "name_prefix_id"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_items_weapons_sub_weapons", :force => true do |t|
+    t.string   "name",                       :default => "", :null => false
+    t.string   "model_filename"
+    t.integer  "restriction"
+    t.integer  "item_type_id"
+    t.integer  "price"
+    t.integer  "price_fluctuation_rate"
+    t.integer  "weight"
+    t.integer  "quality"
+    t.integer  "icon_number"
+    t.integer  "field_item"
+    t.integer  "equipping_sound_effect"
+    t.integer  "crafting_id"
+    t.integer  "crafting_level"
+    t.integer  "crafting_material_id"
+    t.integer  "crafting_difficulty"
+    t.integer  "required_job_1_id"
+    t.integer  "required_job_2_id"
+    t.integer  "required_job_3_id"
+    t.integer  "required_ability_1_id"
+    t.integer  "required_ability_1_value"
+    t.integer  "required_ability_2_id"
+    t.integer  "required_ability_2_value"
+    t.integer  "conditional_affiliations1"
+    t.integer  "additional_ability_1_id"
+    t.integer  "additional_ability_1_value"
+    t.integer  "conditional_affiliations2"
+    t.integer  "additional_ability_2_id"
+    t.integer  "additional_ability_2_value"
+    t.integer  "durability"
+    t.integer  "accuracy"
+    t.integer  "defense"
+    t.integer  "magical_defense"
+    t.integer  "material_type"
+    t.integer  "name_prefix_id"
+    t.integer  "product"
+    t.integer  "refine"
+    t.integer  "break"
+    t.integer  "pvp_atk"
+    t.integer  "pvp_def"
+    t.integer  "pvm_atk"
+    t.string   "model_attribute"
+    t.integer  "item_set_id"
+    t.string   "item_description"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "rose_languages", :force => true do |t|
+    t.string  "token"
+    t.integer "translation_column"
+    t.string  "translation_id"
+  end
+
+  add_index "rose_languages", ["token"], :name => "index_rose_languages_on_token", :unique => true
+  add_index "rose_languages", ["translation_column"], :name => "index_rose_languages_on_translation_column", :unique => true
+
+  create_table "rose_quests", :force => true do |t|
+    t.string   "name",            :default => "", :null => false
+    t.integer  "time_limit"
+    t.integer  "icon_number"
+    t.string   "abandon_trigger"
+    t.integer  "repeatable"
+    t.integer  "daily_limit"
+    t.string   "description_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "rose_status_effects", :force => true do |t|
+    t.string   "subname",                            :default => "", :null => false
+    t.string   "name",                               :default => "", :null => false
+    t.integer  "effect_type"
+    t.integer  "stackable"
+    t.integer  "buff_type"
+    t.integer  "removable"
+    t.integer  "status_line_1"
+    t.integer  "status_value_1"
+    t.integer  "status_line_2"
+    t.integer  "status_value_2"
+    t.integer  "icon_number"
+    t.integer  "effect"
+    t.integer  "sound_effect"
+    t.integer  "control1"
+    t.integer  "control2"
+    t.integer  "control3"
+    t.integer  "ending_effect"
+    t.integer  "ending_sound_effect"
+    t.integer  "buff_type_depending_on_status_line"
+    t.string   "effect_description"
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+  end
+
+  create_table "rose_translations_abilities", :force => true do |t|
+    t.integer  "translation_id"
+    t.integer  "language_id"
+    t.string   "translation"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "rose_translations_abilities", ["translation_id", "language_id"], :name => "translation_id", :unique => true
+
+  create_table "rose_translations_descriptions", :force => true do |t|
+    t.string   "translation_id"
+    t.integer  "language_id"
+    t.string   "translation"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "rose_translations_descriptions", ["language_id", "translation_id"], :name => "tlid", :unique => true
+
+  create_table "rose_translations_item_grades", :force => true do |t|
+    t.integer  "translation_id"
+    t.integer  "language_id"
+    t.string   "translation"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "rose_translations_item_grades", ["language_id", "translation_id"], :name => "tlid", :unique => true
+
+  create_table "rose_translations_item_prefixes", :force => true do |t|
+    t.integer  "translation_id"
+    t.integer  "language_id"
+    t.string   "translation"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "rose_translations_item_prefixes", ["language_id", "translation_id"], :name => "tlid", :unique => true
+
+  create_table "rose_translations_item_suffixes", :force => true do |t|
+    t.integer  "translation_id"
+    t.integer  "language_id"
+    t.string   "translation"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "rose_translations_item_suffixes", ["language_id", "translation_id"], :name => "tlid", :unique => true
+
+  create_table "rose_translations_item_types", :force => true do |t|
+    t.integer  "translation_id"
+    t.integer  "language_id"
+    t.string   "translation"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "rose_translations_item_types", ["language_id", "translation_id"], :name => "tlid", :unique => true
+
+  create_table "rose_translations_jobs", :force => true do |t|
+    t.integer  "translation_id"
+    t.integer  "language_id"
+    t.string   "translation"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "rose_translations_jobs", ["language_id", "translation_id"], :name => "tlid", :unique => true
+
+  create_table "rose_translations_names", :force => true do |t|
+    t.string   "translation_id"
+    t.integer  "language_id"
+    t.string   "translation"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "rose_translations_names", ["language_id", "translation_id"], :name => "tlid", :unique => true
+
+  create_table "user_roles", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "role_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_roles", ["user_id", "role_id"], :name => "index_user_roles_on_user_id_and_role_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "name",                   :default => "", :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.string   "authentication_token"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["name"], :name => "index_users_on_name", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+
+end

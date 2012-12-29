@@ -1,0 +1,47 @@
+en:
+  devise:
+    confirmations:
+      new:
+        headline: "Resend confirmation instructions"
+        submit: "Resend confirmation instructions"
+    confirmations:
+      new:
+        headline: "Resend confirmation instructions"
+        submit: "Resend confirmation instructions"
+    passwords:
+      new:
+        headline: "Forgot your password?"
+        submit: "Send reset password instructions"
+      edit:
+        headline: "Change your password"
+        password: "New password"
+        password_confirmation: "Confirm new password"
+        submit: "Change my password"
+    registrations:
+      new:
+        headline: "Sign up"
+        submit: "Sign up"
+      edit:
+        headline: "Edit %{name}"
+        submit: "Update"
+        password_notice: "(leave blank if you don't want to change it)"
+        password_confirmation_notice: "(we need your current password to confirm your changes)"
+        cancel_account:
+          headline: "Cancel my account"
+          submit: "Cancel my account"
+          confirm: "Are you sure?"
+    sessions:
+      new:
+        headline: "Sign in"
+        submit: "Sign in"
+    unlocks:
+      new:
+        submit: "Resend unlock instructions"
+        headline: "Resend unlock instructions"
+    links:
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      forgot_password: "Forgot your password?"
+      request_confirmation_instructions: "Didn't receive confirmation instructions?"
+      request_unlock_instructions: "Didn't receive unlock instructions?"
+      sign_in_with_openid: "Sign in with %{provider}"

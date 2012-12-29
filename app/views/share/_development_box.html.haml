@@ -1,0 +1,15 @@
+- return '' if Rails.env.production?
+.development_box
+  .box
+    %span.title Development-Information (#{model.class.name})
+    - model.attributes.each do |k, v|
+      %div{:class=>cycle("odd", "even")}
+        %span.attribute= k
+        %span.value
+          - case 
+            - when v && !v.to_s.length.zero?
+              = v
+            - when v && v.to_s.length.zero?
+              = "&nbsp;".html_safe
+            - else
+              = content_tag(:i, 'nil')

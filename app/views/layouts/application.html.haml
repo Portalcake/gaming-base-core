@@ -1,0 +1,62 @@
+!!! XML
+!!!
+%html
+  %head
+    %title= content_for?(:title) ? content_for(:title) : "MyChars"
+    = stylesheet_link_tag "application", :media => "all"
+    - if content_for :stylesheets
+      = yield :stylesheets
+    /[if IE 6]
+      = stylesheet_link_tag 'ie6'
+    /[if IE 7]
+      = stylesheet_link_tag 'ie7'
+    = javascript_include_tag "application"
+    - if content_for :javascripts
+      = yield :javascripts
+    = csrf_meta_tags
+    %link{:rel=>"shortcut icon", :href=>"/favicon.ico"}
+  %body
+
+    #container
+      #header
+        %h1= link_to "MyChars", main_app.dashboard_url
+        #subheader= yield :header
+
+      - unless Rails.env.production?
+        #login
+          - if user_signed_in?
+            = t ".signed_in_html", :name => link_to(current_user, main_app.edit_user_registration_path)
+            %br
+            = link_to t(".sign_out"), main_app.destroy_user_session_path
+          - else
+            = link_to t(".sign_up"), main_app.new_user_registration_path
+            \-
+            = link_to t(".sign_in"), main_app.new_user_session_path
+      
+        - content_for :left_page_boxes do
+          #locale_chooser
+            .box_title Webpage Language
+            - Language.all.each do |l|
+              - turl = url_for(:locale=>l.tld)
+              .flag{:class=>current_page?(turl) ? "current" : nil }= link_to image_tag("flags/#{l.tld}.png"), turl
+
+      #top_navigation= content_for?(:main_navigation) ? yield(:main_navigation) : render_navigation(:level => 1, &build_page_navigation)
+      #content-wrapper
+        #left_page_wrapper
+          #sub_navigation= content_for?(:sub_navigation) ? yield(:sub_navigation) : render_navigation(:level => 2, &build_page_navigation)
+
+          - if content_for? :left_page_boxes
+            #left_page_boxes= yield :left_page_boxes
+        
+        #content
+          - unless notice.nil? || strip_tags(notice).strip.empty?
+            - content_for :notice do
+              = notice
+          - if content_for? :notice
+            #notice= yield :notice
+          - unless alert.nil? || strip_tags(alert).strip.empty?
+            - content_for :alert do
+              = alert
+          - if content_for? :alert
+            #error= yield :alert
+          = content_for?(:content) ? yield(:content) : yield

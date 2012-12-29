@@ -1,0 +1,8 @@
+de:
+  activerecord:
+    models:
+      rose/items/weapon: Weapon
+      rose/items/equipment/glove: Glove
+      rose/items/equipment/back: Back
+      rose/items/equipment/body: Body
+      rose/items/equipment/boot: Boot

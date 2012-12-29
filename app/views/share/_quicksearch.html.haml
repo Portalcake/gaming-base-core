@@ -1,0 +1,7 @@
+.quick_search
+  = form_tag({}, :method => "get") do
+    = label_tag(:q, "Search for:")
+    = text_field_tag(:q, params[:q], :placeholder => "Name")
+    = submit_tag("Search")
+    = link_to "clear filter", params.except(:q, :page, :commit, :utf8)
+%br

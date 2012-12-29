@@ -1,0 +1,15 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+doc/
+.sass-cache/
+public/assets/
+config/database.yml
+*.class
+*.pyc
+*.pyo
+.project
+.rvmrc
+share/gameclients/*/
+subpages/
