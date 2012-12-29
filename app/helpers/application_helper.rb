@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def title(page_title)
-    content_for(:title) { "MyChars" } unless content_for?(:title)
+    content_for(:title) { "Gaming-Base" } unless content_for?(:title)
     content_for(:title) { " - #{page_title}" }
   end
 

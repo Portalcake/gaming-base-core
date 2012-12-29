@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :alert => "Language not supported"
       return
     end
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = (params[:locale] || I18n.default_locale)
   end
 
   def current_language
