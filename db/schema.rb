@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228093232) do
+ActiveRecord::Schema.define(:version => 20121230101057) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -151,6 +151,15 @@ ActiveRecord::Schema.define(:version => 20121228093232) do
     t.datetime "updated_at",                                       :null => false
     t.integer  "items_count",                       :default => 0, :null => false
   end
+
+  create_table "ragnarok2_item_sets", :force => true do |t|
+    t.integer  "set_id",                  :default => 0, :null => false
+    t.integer  "string_id",  :limit => 8, :default => 0, :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "ragnarok2_item_sets", ["set_id"], :name => "index_ragnarok2_item_sets_on_set_id", :unique => true
 
   create_table "ragnarok2_items", :force => true do |t|
     t.integer  "item_id",                 :limit => 8, :default => 0, :null => false
@@ -435,6 +444,18 @@ ActiveRecord::Schema.define(:version => 20121228093232) do
 
   add_index "ragnarok2_quests", ["quest_id"], :name => "index_ragnarok2_quests_on_quest_id", :unique => true
 
+  create_table "ragnarok2_set_items", :force => true do |t|
+    t.integer  "item_set_id", :default => 0, :null => false
+    t.integer  "item_1_id",   :default => 0, :null => false
+    t.integer  "item_2_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "ragnarok2_set_items", ["item_1_id"], :name => "index_ragnarok2_set_items_on_item_1_id"
+  add_index "ragnarok2_set_items", ["item_2_id"], :name => "index_ragnarok2_set_items_on_item_2_id"
+  add_index "ragnarok2_set_items", ["item_set_id"], :name => "index_ragnarok2_set_items_on_item_set_id"
+
   create_table "ragnarok2_translations_citizen_descriptions", :force => true do |t|
     t.integer  "citizen_id",  :limit => 8, :default => 0, :null => false
     t.string   "translation"
@@ -488,6 +509,15 @@ ActiveRecord::Schema.define(:version => 20121228093232) do
   end
 
   add_index "ragnarok2_translations_item_names", ["item_id"], :name => "iid", :unique => true
+
+  create_table "ragnarok2_translations_item_sets", :force => true do |t|
+    t.integer  "item_set_id", :limit => 8, :default => 0, :null => false
+    t.string   "translation"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_translations_item_sets", ["item_set_id"], :name => "sid", :unique => true
 
   create_table "ragnarok2_translations_job_names", :force => true do |t|
     t.integer  "job_id",      :limit => 8, :default => 0, :null => false
