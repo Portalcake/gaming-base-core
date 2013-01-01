@@ -75,6 +75,17 @@ namespace :gameclients do
   end
 end
 
+namespace :games do
+  desc "Create assets folder for games"
+  task :setup, :except => { :no_release => true } do
+    run "mkdir -p #{shared_path}/public/assets/games"
+  end
+  desc "Generate symlink for assets folder for games" 
+  task :symlink, :except => { :no_release => true } do
+    run "ln -nfs #{shared_path}/public/assets/games #{release_path}/public/assets/games" 
+  end
+end
+
 namespace :subpages do
   desc "Creates folders for subpages and pulls their git master repository"
   task :setup, :except => { :no_release => true } do
@@ -95,8 +106,10 @@ end
 
 after "deploy:setup", "db:setup"
 after "deploy:setup", "gameclients:setup"
+after "deploy:setup", "games:setup"
 after "deploy:finalize_update", "db:symlink"
 after "whenever:update_crontab", "gameclients:symlink"
 after "whenever:update_crontab", "subpages:setup"
+after "deploy:finalize_update", "games:symlink"
 after "deploy:finalize_update", "subpages:migrate"
 after "deploy", "deploy:migrate"
