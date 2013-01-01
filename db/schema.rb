@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230101057) do
+ActiveRecord::Schema.define(:version => 20130101144125) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -207,6 +207,7 @@ ActiveRecord::Schema.define(:version => 20121230101057) do
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
     t.integer  "category_id"
+    t.integer  "weapon_type"
   end
 
   add_index "ragnarok2_items", ["item_id"], :name => "index_ragnarok2_items_on_item_id", :unique => true
