@@ -76,13 +76,13 @@ namespace :gameclients do
 end
 
 namespace :games do
-  desc "Create assets folder for games"
+  desc "Generate public game data folder"
   task :setup, :except => { :no_release => true } do
-    run "mkdir -p #{shared_path}/public/assets/games"
+    run "mkdir -p #{shared_path}/public/games"
   end
-  desc "Generate symlink for assets folder for games" 
+  desc "Generate symlink for public game data folder" 
   task :symlink, :except => { :no_release => true } do
-    run "ln -nfs #{shared_path}/public/assets/games #{release_path}/public/assets/games" 
+    run "ln -nfs #{shared_path}/public/games #{release_path}/public/games" 
   end
 end
 
