@@ -1,3 +1,4 @@
+# This migration comes from rose (originally 20121213092520)
 class CreateRoseItemsQuestItems < ActiveRecord::Migration
   def change
     create_table :rose_items_quest_items do |t|

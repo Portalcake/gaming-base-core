@@ -1,3 +1,4 @@
+# This migration comes from rose (originally 20121216120836)
 class CreateRoseStatusEffects < ActiveRecord::Migration
   def change
     create_table :rose_status_effects do |t|

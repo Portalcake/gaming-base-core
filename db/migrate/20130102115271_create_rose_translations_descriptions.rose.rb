@@ -1,3 +1,4 @@
+# This migration comes from rose (originally 20121215130824)
 class CreateRoseTranslationsDescriptions < ActiveRecord::Migration
   def change
     create_table :rose_translations_descriptions do |t|

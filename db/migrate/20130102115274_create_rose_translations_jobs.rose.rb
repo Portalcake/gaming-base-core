@@ -1,3 +1,4 @@
+# This migration comes from rose (originally 20121215140802)
 class CreateRoseTranslationsJobs < ActiveRecord::Migration
   def change
     create_table :rose_translations_jobs do |t|

@@ -1,3 +1,4 @@
+# This migration comes from rose (originally 20121216141406)
 class CreateRoseItemsEngineParts < ActiveRecord::Migration
   def change
     create_table :rose_items_engine_parts do |t|

@@ -1,3 +1,4 @@
+# This migration comes from rose (originally 20121215134102)
 class CreateRoseTranslationsItemSuffixes < ActiveRecord::Migration
   def change
     create_table :rose_translations_item_suffixes do |t|

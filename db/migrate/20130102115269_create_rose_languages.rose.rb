@@ -1,3 +1,4 @@
+# This migration comes from rose (originally 20121214110641)
 class CreateRoseLanguages < ActiveRecord::Migration
   def change
     create_table :rose_languages do |t|
