@@ -3,12 +3,17 @@ class DashboardController < ApplicationController
     respond_to do |format|
       format.html { 
         flash.keep
-        redirect_to dashboard_url
+        redirect_to news_index_url
       }
     end
   end
 
   def start
-    respond_with()
+    respond_to do |format|
+      format.html { 
+        flash.keep
+        redirect_to news_index_url
+      }
+    end
   end
 end

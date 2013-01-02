@@ -1,0 +1,7 @@
+de:
+  layouts:
+     application:
+       sign_up: Registrieren
+       sign_in: Anmelden
+       sign_out: Abmelden
+       signed_in_html: Angemeldet als %{name}

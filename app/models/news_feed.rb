@@ -35,9 +35,6 @@ class NewsFeed < ActiveRecord::Base
             :url=>feed_entry.url
             }, :without_protection => true
           )
-          p news.errors
-
-
         end
 
         news_feed.last_accessed = Time.now
