@@ -1,0 +1,7 @@
+en:
+  layouts:
+     application:
+       sign_up: Sign up
+       sign_in: sign in
+       sign_out: Log out
+       signed_in_html: Logged in as %{name}

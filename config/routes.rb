@@ -23,7 +23,7 @@ Gamingbase::Application.routes.draw do
         end
     end
 
-    resources :news, :only => [:show, :index]
+    resources :news
 
     namespace :admin, :as=>false do
       resources :news_feeds, :except => [:show, :new]

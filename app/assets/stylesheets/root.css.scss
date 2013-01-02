@@ -6,7 +6,7 @@ html, body {
 
 body {
   background: none repeat scroll 0 0 #F7F7F7;
-  color: #111111;
+  color: #333333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 10px;
   text-align: left;
@@ -30,6 +30,10 @@ input, textarea, select {
   border: 1px solid #CCCCCC;
   background: none repeat scroll 0 0 #f2f2f2;
   color: #333333 }
+
+form .actions input {
+  padding:1px 3px 1px 3px;
+}
 
 #header {
   margin: 10px 0px 20px 0px;
@@ -202,6 +206,32 @@ span.booleanize_true {
 }
 
 
+.box {
+  padding-bottom: 5px;
+  position: relative;
+  z-index: 1;  
+  &:before {
+    border-top: 1px solid #DDDDDD;
+    content:"";
+    margin: 0 auto;
+    position: absolute;
+    top: 7px; left: 0; right: 0; bottom: 0;
+    width: 95%;
+    z-index: -1;
+  }
+  & span.title {
+    background: #F7F7F7;
+    font-weight: bold;
+    padding-right: 5px;
+  }
+}
+
+
+
+
+
+
+
 .model_listing {
   & .model_icon {
     float:left;
@@ -232,25 +262,5 @@ span.booleanize_true {
   & .model_icon {
     float:left;
     padding-right:5px;
-  }
-}
-
-.box {
-  padding-bottom: 5px;
-  position: relative;
-  z-index: 1;  
-  &:before {
-    border-top: 1px solid #DDDDDD;
-    content:"";
-    margin: 0 auto;
-    position: absolute;
-    top: 7px; left: 0; right: 0; bottom: 0;
-    width: 95%;
-    z-index: -1;
-  }
-  & span.title {
-    background: #F7F7F7;
-    font-weight: bold;
-    padding-right: 5px;
   }
 }

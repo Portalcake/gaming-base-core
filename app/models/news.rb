@@ -1,5 +1,7 @@
 class News < ActiveRecord::Base
 
+  attr_accessible :title, :url, :game_id, :content, :published
+
   belongs_to :game, :inverse_of => :news
   belongs_to :user, :inverse_of => :news
 
@@ -9,8 +11,8 @@ class News < ActiveRecord::Base
 
   validates :title, :published, :presence=>true
 
-  default_scope lambda { where("news.published <= ?", Time.now) }
   default_scope order("news.published DESC")
+  scope :published, lambda { where("news.published <= ?", Time.now) }
 
   self.per_page = 10
 

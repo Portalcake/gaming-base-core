@@ -48,4 +48,13 @@ class ApplicationController < ActionController::Base
   def redirect_on_error
     main_app.root_url
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to redirect_on_error, :alert => exception.message
+    return
+  end
+
+  def authorize!(type, object)
+    raise CanCan::AccessDenied unless user_can?(type, object)
+  end
 end

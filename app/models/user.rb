@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :token_authenticatable, :encryptable, :confirmable, :lockable,
+         :token_authenticatable, :confirmable, :lockable,
          :timeoutable
 
   # Setup accessible (or protected) attributes for your model
@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
 
   def roles_list(dummy=nil)
     [:guest] + self.roles
+  end
+
+  def to_s
+    self.name
   end
 
   def to_param
