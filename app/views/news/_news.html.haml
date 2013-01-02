@@ -1,0 +1,5 @@
+%div[news]{:class=>:partial}
+  .published= l news.published, :format=>:short
+  .content
+    .title= news.url?? link_to_blank(news.title, news.url) : link_to(news.title, news)
+    = truncate(news.content, :length => 140, :separator => ' ')

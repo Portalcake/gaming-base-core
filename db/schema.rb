@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101144125) do
+ActiveRecord::Schema.define(:version => 20130101184932) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -28,6 +28,32 @@ ActiveRecord::Schema.define(:version => 20130101144125) do
     t.string "tld",  :limit => 2,  :default => "", :null => false
     t.string "name", :limit => 64, :default => "", :null => false
   end
+
+  create_table "news", :force => true do |t|
+    t.string   "title",      :default => "", :null => false
+    t.string   "url"
+    t.string   "author"
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.text     "content"
+    t.datetime "published",                  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "news", ["game_id"], :name => "index_news_on_game_id"
+  add_index "news", ["published"], :name => "index_news_on_published"
+  add_index "news", ["user_id"], :name => "index_news_on_user_id"
+
+  create_table "news_feeds", :force => true do |t|
+    t.string   "title"
+    t.string   "feed_url",      :default => "", :null => false
+    t.integer  "game_id"
+    t.datetime "last_accessed"
+    t.string   "last_error"
+  end
+
+  add_index "news_feeds", ["game_id"], :name => "index_news_feeds_on_game_id"
 
   create_table "ragnarok2_citizen_items", :force => true do |t|
     t.integer  "citizen_id", :limit => 8, :default => 0, :null => false

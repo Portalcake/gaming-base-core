@@ -65,6 +65,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    curb (0.7.18)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -76,6 +77,16 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    feedzirra (0.0.31)
+      activesupport (>= 3.0.8)
+      builder (~> 3.0.0)
+      curb (~> 0.7.15)
+      i18n (>= 0.5.0)
+      loofah (~> 1.0.0)
+      nokogiri (~> 1.4.4)
+      rake (>= 0.9.2)
+      rdoc (~> 3.8)
+      sax-machine (~> 0.0.20)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     haml (3.1.7)
@@ -89,6 +100,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.7.5)
     libv8 (3.3.10.4)
+    loofah (1.0.0)
+      nokogiri (>= 1.3.3)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -103,6 +116,7 @@ GEM
     net-ssh (2.6.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
+    nokogiri (1.4.7)
     normalize-rails (2.0.1)
     orm_adapter (0.4.0)
     paperclip (3.3.1)
@@ -148,6 +162,8 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    sax-machine (0.0.20)
+      nokogiri (> 0.0.0)
     simple-navigation (3.9.0)
       activesupport (>= 2.3.2)
     simple_roles (0.0.8)
@@ -192,6 +208,7 @@ DEPENDENCIES
   devise (~> 2.1)
   devise-encryptable
   devise-i18n
+  feedzirra (~> 0.0)
   formtastic
   haml
   jquery-rails

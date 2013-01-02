@@ -1,0 +1,9 @@
+.div[news_feed]
+  - if news_feed.game
+    [#{news_feed.game}]
+  = news_feed.title
+  = link_to news_feed.feed_url, news_feed.feed_url
+  = link_to '', news_feed,
+        method: :delete,
+        data: { confirm: 'Are you sure?' },
+        :class=>["icon", "image-destroy"], :title=>"Delete"

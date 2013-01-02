@@ -22,6 +22,12 @@ Gamingbase::Application.routes.draw do
           get :cancel
         end
     end
+
+    resources :news, :only => [:show, :index]
+
+    namespace :admin, :as=>false do
+      resources :news_feeds, :except => [:show, :new]
+    end
   end
   
   match ":locale" => "dashboard#start", :as => :dashboard

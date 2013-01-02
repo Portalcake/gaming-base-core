@@ -18,3 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+every 20.minutes do
+  runner "NewsFeed.update!"
+end

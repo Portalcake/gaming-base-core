@@ -12,11 +12,18 @@ class Game < ActiveRecord::Base
 
   before_validation { self.token = token.downcase }
 
+  has_many :news_feeds, :dependent=>:destroy
+  has_many :news, :dependent=>:destroy
+
   def maintenance?
     self.maintenance
   end
 
   def published?
     self.published
+  end
+
+  def to_s
+    self.name
   end
 end

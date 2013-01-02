@@ -1,0 +1,5 @@
+- @news_feed ||= NewsFeed.new
+
+= semantic_form_for @news_feed do |f|
+  = f.inputs :title, :feed_url, :game
+  = f.actions :submit

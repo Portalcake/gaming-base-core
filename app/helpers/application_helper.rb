@@ -21,4 +21,8 @@ module ApplicationHelper
   def booleanize_string(string, bool)
     content_tag(:span, string, :class=>"booleanize_#{bool}".downcase)
   end
+
+  def link_to_blank(body, url_options = {}, html_options = {})
+    link_to(body, url_options, html_options.merge(target: "_blank"))
+  end
 end

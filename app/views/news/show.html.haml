@@ -1,0 +1,7 @@
+.news[@news]
+  .published=l @news.published
+  .author Written by #{@news.author}
+  %br
+  .title
+    %b=@news.title
+  .content=simple_format(@news.content)
