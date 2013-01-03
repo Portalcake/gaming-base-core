@@ -97,7 +97,9 @@ class FileExtractor_ct < FileExtractor
            @file.read(1).unpack("C").first]
         when 8
           l = @file.read(4).unpack("l").first
-          @file.read(2*l).encode('UTF-8', 'UTF-16LE')
+          s = @file.read(2*l).encode('UTF-8', 'UTF-16LE')
+          s = nil if s=="NULL"
+          s
         when 9
           @file.read(4).unpack("f").first
         when 11

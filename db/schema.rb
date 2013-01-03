@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103104251) do
+ActiveRecord::Schema.define(:version => 20130103134053) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -176,6 +176,27 @@ ActiveRecord::Schema.define(:version => 20130103104251) do
 
   add_index "ragnarok2_citizens", ["citizen_id"], :name => "index_ragnarok2_citizens_on_citizen_id", :unique => true
 
+  create_table "ragnarok2_dungeons", :force => true do |t|
+    t.integer  "dungeon_id",                    :default => 0, :null => false
+    t.integer  "map_index1",       :limit => 8
+    t.integer  "map_index2",       :limit => 8
+    t.integer  "map_index3",       :limit => 8
+    t.integer  "dungeon_group_id"
+    t.string   "name"
+    t.integer  "map_level"
+    t.string   "bind_value"
+    t.integer  "map_min_level"
+    t.integer  "map_max_level"
+    t.integer  "quest_id",         :limit => 8
+    t.string   "map_description"
+    t.integer  "position_id"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
+  add_index "ragnarok2_dungeons", ["dungeon_id"], :name => "index_ragnarok2_dungeons_on_dungeon_id", :unique => true
+  add_index "ragnarok2_dungeons", ["quest_id"], :name => "index_ragnarok2_dungeons_on_quest_id"
+
   create_table "ragnarok2_item_categories", :force => true do |t|
     t.integer  "category_id",                       :default => 0, :null => false
     t.string   "name_fallback"
@@ -248,6 +269,16 @@ ActiveRecord::Schema.define(:version => 20130103104251) do
   end
 
   add_index "ragnarok2_items", ["item_id"], :name => "index_ragnarok2_items_on_item_id", :unique => true
+
+  create_table "ragnarok2_map_dungeons", :force => true do |t|
+    t.integer  "map_id"
+    t.integer  "dungeon_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ragnarok2_map_dungeons", ["dungeon_id", "map_id"], :name => "index_ragnarok2_map_dungeons_on_dungeon_id_and_map_id", :unique => true
+  add_index "ragnarok2_map_dungeons", ["map_id"], :name => "index_ragnarok2_map_dungeons_on_map_id"
 
   create_table "ragnarok2_maps", :force => true do |t|
     t.integer  "map_id",       :default => 0, :null => false
