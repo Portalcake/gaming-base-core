@@ -16,10 +16,10 @@ module GameHandler
         return false
       end
       unless @game.published?
-        render 'share/game_unpublished', :layout => 'application'
+        render 'share/game_unpublished', :layout => false
       end
       if @game.maintenance?
-        render "share/game_maintenance", :layout => 'application'
+        render "share/game_maintenance", :layout => false
       end
     end
 

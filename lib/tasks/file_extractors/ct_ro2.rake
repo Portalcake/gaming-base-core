@@ -39,7 +39,7 @@
 #  8 == [4, int] string_length
 #       [2*string_length, string]
 #     > race_desc, BanItem, QuestEffectList
-#  9 == [4, uint]
+#  9 == [4, float]
 #     > Custom_ZoomInfo, JobInfo, RidingInfo, Monster, Map_List
 # 11 == [8, float]
 #     > BaseExpTable
@@ -99,7 +99,7 @@ class FileExtractor_ct < FileExtractor
           l = @file.read(4).unpack("l").first
           @file.read(2*l).encode('UTF-8', 'UTF-16LE')
         when 9
-          @file.read(4).unpack("l").first
+          @file.read(4).unpack("f").first
         when 11
           @file.read(8).unpack("q").first
 

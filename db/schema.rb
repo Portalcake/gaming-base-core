@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130102183355) do
+ActiveRecord::Schema.define(:version => 20130103104251) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(:version => 20130102183355) do
 
   add_index "news_feeds", ["game_id"], :name => "index_news_feeds_on_game_id"
 
+  create_table "ragnarok2_base_exps", :force => true do |t|
+    t.integer  "base_level",                 :default => 0, :null => false
+    t.integer  "base_exp_next", :limit => 8, :default => 0, :null => false
+    t.integer  "npc_base_exp",  :limit => 8, :default => 0, :null => false
+    t.integer  "pro_exp_next",  :limit => 8, :default => 0, :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  add_index "ragnarok2_base_exps", ["base_level"], :name => "index_ragnarok2_base_exps_on_base_level", :unique => true
+
   create_table "ragnarok2_citizen_items", :force => true do |t|
     t.integer  "citizen_id", :limit => 8, :default => 0, :null => false
     t.integer  "item_id",    :limit => 8, :default => 0, :null => false
@@ -91,8 +102,8 @@ ActiveRecord::Schema.define(:version => 20130102183355) do
     t.integer  "shape_type"
     t.integer  "corpse_disappear_time"
     t.integer  "drop_id"
-    t.integer  "base_exp_multiplier"
-    t.integer  "lisence_exp_multiplier"
+    t.float    "base_exp_multiplier"
+    t.float    "lisence_exp_multiplier"
     t.integer  "resist_point"
     t.integer  "water_resist"
     t.integer  "earth_resist"
@@ -103,22 +114,22 @@ ActiveRecord::Schema.define(:version => 20130102183355) do
     t.integer  "dark_resist"
     t.integer  "psychokinesis_resist"
     t.integer  "death_resist"
-    t.integer  "walk_speed"
-    t.integer  "run_speed"
-    t.integer  "run_correction"
+    t.float    "walk_speed"
+    t.float    "run_speed"
+    t.float    "run_correction"
     t.integer  "idle_move_rate"
-    t.integer  "min_move_action_time"
-    t.integer  "max_move_action_time"
+    t.float    "min_move_action_time"
+    t.float    "max_move_action_time"
     t.integer  "idle_action_rate"
-    t.integer  "min_idle_action_time"
-    t.integer  "max_idle_action_time"
+    t.float    "min_idle_action_time"
+    t.float    "max_idle_action_time"
     t.integer  "monologue_action_rate"
     t.integer  "string_monologue_id"
-    t.integer  "min_monologue_action_time"
-    t.integer  "max_monologue_action_time"
+    t.float    "min_monologue_action_time"
+    t.float    "max_monologue_action_time"
     t.integer  "task_action_rate"
-    t.integer  "min_task_action_time"
-    t.integer  "max_task_action_time"
+    t.float    "min_task_action_time"
+    t.float    "max_task_action_time"
     t.integer  "function_type_1"
     t.integer  "function_id_1"
     t.integer  "function_type_2"
@@ -127,28 +138,28 @@ ActiveRecord::Schema.define(:version => 20130102183355) do
     t.integer  "function_id_3"
     t.integer  "npc_voice_type"
     t.integer  "invincibility"
-    t.integer  "spawn_freeze_time"
+    t.float    "spawn_freeze_time"
     t.integer  "patience"
     t.integer  "pain_grade"
     t.integer  "threat_reaction_point"
     t.integer  "aggro_target_selection_type"
-    t.integer  "reaction_bound"
+    t.float    "reaction_bound"
     t.integer  "follow_groupid"
     t.integer  "follow_group_captain"
     t.integer  "follow_pc"
-    t.integer  "follow_distance"
-    t.integer  "attack_range"
-    t.integer  "attack_execution_time"
-    t.integer  "attack_cooldown_time"
-    t.integer  "trace_bound"
+    t.float    "follow_distance"
+    t.float    "attack_range"
+    t.float    "attack_execution_time"
+    t.float    "attack_cooldown_time"
+    t.float    "trace_bound"
     t.integer  "spreadaggro"
     t.integer  "spreadaggrotype"
-    t.integer  "battle_start"
-    t.integer  "attack_time"
+    t.float    "battle_start"
+    t.float    "attack_time"
     t.integer  "steal_groupid"
     t.integer  "pet_id"
     t.integer  "afterdeath_funcobject_id"
-    t.integer  "attacklimit"
+    t.float    "attacklimit"
     t.integer  "skillgroup"
     t.integer  "ability_1"
     t.integer  "ability_2"
@@ -244,9 +255,9 @@ ActiveRecord::Schema.define(:version => 20130102183355) do
     t.string   "map_file"
     t.integer  "map_type"
     t.integer  "max_count"
-    t.integer  "x"
-    t.integer  "y"
-    t.integer  "z"
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
     t.integer  "is_pk"
     t.integer  "is_mount"
     t.integer  "is_attack"
@@ -325,53 +336,53 @@ ActiveRecord::Schema.define(:version => 20130102183355) do
     t.integer  "area_id_1"
     t.integer  "complete_target_1"
     t.integer  "target_id_1",        :limit => 8
-    t.integer  "target_x_1"
-    t.integer  "target_y_1"
+    t.float    "target_x_1"
+    t.float    "target_y_1"
     t.integer  "area_id_2"
     t.integer  "complete_target_2"
     t.integer  "target_id_2",        :limit => 8
-    t.integer  "target_x_2"
-    t.integer  "target_y_2"
+    t.float    "target_x_2"
+    t.float    "target_y_2"
     t.integer  "area_id_3"
     t.integer  "complete_target_3"
     t.integer  "target_id_3",        :limit => 8
-    t.integer  "target_x_3"
-    t.integer  "target_y_3"
+    t.float    "target_x_3"
+    t.float    "target_y_3"
     t.integer  "area_id_4"
     t.integer  "complete_target_4"
     t.integer  "target_id_4",        :limit => 8
-    t.integer  "target_x_4"
-    t.integer  "target_y_4"
+    t.float    "target_x_4"
+    t.float    "target_y_4"
     t.integer  "area_id_5"
     t.integer  "complete_target_5"
     t.integer  "target_id_5",        :limit => 8
-    t.integer  "target_x_5"
-    t.integer  "target_y_5"
+    t.float    "target_x_5"
+    t.float    "target_y_5"
     t.integer  "area_id_6"
     t.integer  "complete_target_6"
     t.integer  "target_id_6",        :limit => 8
-    t.integer  "target_x_6"
-    t.integer  "target_y_6"
+    t.float    "target_x_6"
+    t.float    "target_y_6"
     t.integer  "area_id_7"
     t.integer  "complete_target_7"
     t.integer  "target_id_7",        :limit => 8
-    t.integer  "target_x_7"
-    t.integer  "target_y_7"
+    t.float    "target_x_7"
+    t.float    "target_y_7"
     t.integer  "area_id_8"
     t.integer  "complete_target_8"
     t.integer  "target_id_8",        :limit => 8
-    t.integer  "target_x_8"
-    t.integer  "target_y_8"
+    t.float    "target_x_8"
+    t.float    "target_y_8"
     t.integer  "area_id_9"
     t.integer  "complete_target_9"
     t.integer  "target_id_9",        :limit => 8
-    t.integer  "target_x_9"
-    t.integer  "target_y_9"
+    t.float    "target_x_9"
+    t.float    "target_y_9"
     t.integer  "area_id_10"
     t.integer  "complete_target_10"
     t.integer  "target_id_10",       :limit => 8
-    t.integer  "target_x_10"
-    t.integer  "target_y_10"
+    t.float    "target_x_10"
+    t.float    "target_y_10"
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
   end
@@ -1319,7 +1330,7 @@ ActiveRecord::Schema.define(:version => 20130102183355) do
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "rose_translations_abilities", ["translation_id", "language_id"], :name => "translation_id", :unique => true
+  add_index "rose_translations_abilities", ["language_id", "translation_id"], :name => "tlid", :unique => true
 
   create_table "rose_translations_descriptions", :force => true do |t|
     t.string   "translation_id"
