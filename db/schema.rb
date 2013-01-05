@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103134053) do
+ActiveRecord::Schema.define(:version => 20130104183935) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -525,6 +525,32 @@ ActiveRecord::Schema.define(:version => 20130103134053) do
   add_index "ragnarok2_set_items", ["item_2_id"], :name => "index_ragnarok2_set_items_on_item_2_id"
   add_index "ragnarok2_set_items", ["item_set_id"], :name => "index_ragnarok2_set_items_on_item_set_id"
 
+  create_table "ragnarok2_set_traits", :force => true do |t|
+    t.integer  "set_id",      :null => false
+    t.integer  "trait_kind"
+    t.integer  "trait_type"
+    t.float    "trait_value"
+    t.integer  "amount"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "ragnarok2_set_traits", ["set_id"], :name => "index_ragnarok2_set_traits_on_set_id"
+
+  create_table "ragnarok2_traits", :force => true do |t|
+    t.integer  "item_id",      :null => false
+    t.integer  "nationenable"
+    t.integer  "trait_kind"
+    t.integer  "trait_type"
+    t.float    "trait_value1"
+    t.float    "trait_value2"
+    t.integer  "option_set"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "ragnarok2_traits", ["item_id"], :name => "index_ragnarok2_traits_on_item_id"
+
   create_table "ragnarok2_translations_citizen_descriptions", :force => true do |t|
     t.integer  "citizen_id",  :limit => 8, :default => 0, :null => false
     t.string   "translation"
@@ -612,6 +638,15 @@ ActiveRecord::Schema.define(:version => 20130103134053) do
   end
 
   add_index "ragnarok2_translations_quests", ["quest_id"], :name => "index_ragnarok2_translations_quests_on_quest_id", :unique => true
+
+  create_table "ragnarok2_translations_trait_names", :force => true do |t|
+    t.integer  "trait_id",    :limit => 8, :default => 0, :null => false
+    t.string   "translation"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_translations_trait_names", ["trait_id"], :name => "tid", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name",       :null => false
