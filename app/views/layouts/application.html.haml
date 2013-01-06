@@ -60,3 +60,6 @@
           - if content_for? :alert
             #error= yield :alert
           = content_for?(:content) ? yield(:content) : yield
+
+      - if Rails.env.production?
+        #piwik=render "share/piwik"
