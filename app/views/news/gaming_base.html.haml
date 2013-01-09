@@ -1,0 +1,4 @@
+- @news.each do |news|
+  = render :partial=>"/news/news", :locals => { :news => news }
+
+= render "share/pagination", :entries => @news

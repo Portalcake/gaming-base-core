@@ -23,7 +23,12 @@ Gamingbase::Application.routes.draw do
         end
     end
 
-    resources :news
+    resources :news do
+      collection do
+        get :games
+        get :gaming_base
+      end
+    end
 
     namespace :admin, :as=>false do
       resources :news_feeds, :except => [:show, :new]

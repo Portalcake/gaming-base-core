@@ -1,4 +1,18 @@
-- @news.each do |news|
-  = render :partial=>"/news/news", :locals => { :news => news }
+.box
+  %span.title Latest Gaming-Base news
+  .news.gaming_base
+    - @news[:gaming_base].each do |news|
+      = render :partial=>"/news/news", :locals => { :news => news }
+    - if @news[:gaming_base].empty?
+      No entries found
 
-= render "share/pagination", :entries => @news
+.box
+  %span.title Latest game news
+  .news.gaming_base
+    - @news[:games].each do |news|
+      = render :partial=>"/news/news", :locals => { :news => news }
+    - if @news[:games].empty?
+      No entries found
+
+
+

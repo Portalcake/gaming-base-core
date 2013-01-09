@@ -1,18 +1,24 @@
 .news[@news]
-  .published=l @news.published
-  .author Written by #{@news.author}
-  - if user_can? :edit, @news
-    = link_to_unless_current '',
-        main_app.edit_news_path(@news),
-        :class=>["icon", "icon-edit"], :title=>"Edit"
-  - if user_can? :destroy, @news
-    = link_to '', @news,
-        method: :delete,
-        data: { confirm: 'Are you sure?' },
-        :class=>["icon", "image-destroy"], :title=>"Delete"
-  %br
-  .title
-    %b=@news.title
+  .header
+    .author
+      - if @news.user
+        .gravatar= image_tag gravatar(@news.user.email)
+        Written by #{@news.user}
+      - else
+        Written by #{@news.author}
+
+    .published=l @news.published
+    - if user_can? :edit, @news
+      = link_to_unless_current '',
+          main_app.edit_news_path(@news),
+          :class=>["icon", "icon-edit"], :title=>"Edit"
+    - if user_can? :destroy, @news
+      = link_to '', @news,
+          method: :delete,
+          data: { confirm: 'Are you sure?' },
+          :class=>["icon", "image-destroy"], :title=>"Delete"
+
+  .title=@news.title
   .content
     :markdown
       #{@news.content}

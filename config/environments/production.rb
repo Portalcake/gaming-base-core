@@ -13,7 +13,7 @@ Gamingbase::Application.configure do
 #    :password => 'password',
      :openssl_verify_mode => 'none'
   }
-  config.action_mailer.default_url_options = { :host => 'mychars.net' }
+  config.action_mailer.default_url_options = { :host => 'gaming-base.net' }
 
   # Code is not reloaded between requests
   config.cache_classes = true

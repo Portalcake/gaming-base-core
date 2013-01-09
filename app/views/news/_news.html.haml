@@ -3,4 +3,4 @@
   %span.title
     - if news.game && !@game
       %span.game [#{news.game}]
-    = news.url?? link_to_blank(news.title, news.url) : link_to(news.title, news)
+    = news.url?? link_to_blank(news.title, news.url) : link_to(news.title, main_app.news_path(news))

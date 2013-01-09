@@ -1,9 +1,21 @@
 class NewsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index, :latest, :gaming_base, :games]
+
 
   def index
-    respond_with(@news = News.published.page(params[:page]))
+    @news = {}
+    @news[:gaming_base] = News.published.where(:game_id=>nil).limit(7)
+    @news[:games] = News.published.where("news.game_id IS NOT NULL").limit(7)
+    respond_with(@news)
+  end
+
+  def gaming_base
+    respond_with(@news = News.published.where(:game_id=>nil).page(params[:page]))
+  end
+
+  def games
+    respond_with(@news = News.published.where("news.game_id IS NOT NULL").page(params[:page]))
   end
 
   def show
