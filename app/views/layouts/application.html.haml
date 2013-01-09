@@ -70,7 +70,7 @@
             %i
               webmaster at gaming-base.net
           #revision
-            - cache(:controller=>"root", :action=>"root", :action_suffix=>"revision") do
+            - cache("page_revision") do
               - if rev = current_revision_string
                 Revision #{rev}
           #opt-out-tracker
