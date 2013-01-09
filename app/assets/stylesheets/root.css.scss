@@ -134,7 +134,11 @@ div#content-wrapper {
       padding-bottom: 5px; }
     & h3, h4, h5, h6 {
       padding-bottom: 2px;
-    } } }
+    } }
+  & #footer {
+    color: gray;
+    text-align: right;
+  } }
 
 .odd, .even {
   padding: 2px;

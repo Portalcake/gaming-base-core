@@ -31,4 +31,11 @@ module ApplicationHelper
   def link_to_blank(body, url_options = {}, html_options = {})
     link_to(body, url_options, html_options.merge(target: "_blank"))
   end
+
+  def current_revision_string
+    file = Rails.root.join("REVISION")
+    return nil unless File.exists?(file)
+    rev = file.open.read
+    "#{rev[0...8]}, #{File.ctime(file)}"
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109150806) do
+ActiveRecord::Schema.define(:version => 20130109185642) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -175,6 +175,10 @@ ActiveRecord::Schema.define(:version => 20130109150806) do
   end
 
   add_index "ragnarok2_citizens", ["citizen_id"], :name => "index_ragnarok2_citizens_on_citizen_id", :unique => true
+  add_index "ragnarok2_citizens", ["max_level"], :name => "index_ragnarok2_citizens_on_max_level"
+  add_index "ragnarok2_citizens", ["min_level"], :name => "index_ragnarok2_citizens_on_min_level"
+  add_index "ragnarok2_citizens", ["string_job_name_id"], :name => "index_ragnarok2_citizens_on_string_job_name_id"
+  add_index "ragnarok2_citizens", ["string_name_id"], :name => "index_ragnarok2_citizens_on_string_name_id"
 
   create_table "ragnarok2_dungeons", :force => true do |t|
     t.integer  "dungeon_id",                    :default => 0, :null => false
@@ -284,7 +288,10 @@ ActiveRecord::Schema.define(:version => 20130109150806) do
     t.integer  "item_break_result_id"
   end
 
+  add_index "ragnarok2_items", ["category_id"], :name => "index_ragnarok2_items_on_category_id"
   add_index "ragnarok2_items", ["item_id"], :name => "index_ragnarok2_items_on_item_id", :unique => true
+  add_index "ragnarok2_items", ["require_level"], :name => "index_ragnarok2_items_on_require_level"
+  add_index "ragnarok2_items", ["string_item_description"], :name => "index_ragnarok2_items_on_string_item_description"
 
   create_table "ragnarok2_map_dungeons", :force => true do |t|
     t.integer  "map_id"
@@ -330,6 +337,7 @@ ActiveRecord::Schema.define(:version => 20130109150806) do
   end
 
   add_index "ragnarok2_merchant_infos", ["entry_id"], :name => "index_ragnarok2_merchant_infos_on_entry_id", :unique => true
+  add_index "ragnarok2_merchant_infos", ["item_id"], :name => "index_ragnarok2_merchant_infos_on_item_id"
   add_index "ragnarok2_merchant_infos", ["merchant_function_id"], :name => "index_ragnarok2_merchant_infos_on_merchant_function_id"
 
   create_table "ragnarok2_pro_jobs", :force => true do |t|
@@ -376,6 +384,7 @@ ActiveRecord::Schema.define(:version => 20130109150806) do
   end
 
   add_index "ragnarok2_quest_citizens", ["citizen_id"], :name => "index_ragnarok2_quest_citizens_on_citizen_id"
+  add_index "ragnarok2_quest_citizens", ["is_start"], :name => "index_ragnarok2_quest_citizens_on_is_start"
   add_index "ragnarok2_quest_citizens", ["quest_id"], :name => "index_ragnarok2_quest_citizens_on_quest_id"
 
   create_table "ragnarok2_quest_infos", :force => true do |t|
@@ -527,7 +536,10 @@ ActiveRecord::Schema.define(:version => 20130109150806) do
     t.datetime "updated_at",                                       :null => false
   end
 
+  add_index "ragnarok2_quests", ["area_id"], :name => "index_ragnarok2_quests_on_area_id"
   add_index "ragnarok2_quests", ["quest_id"], :name => "index_ragnarok2_quests_on_quest_id", :unique => true
+  add_index "ragnarok2_quests", ["quest_type"], :name => "index_ragnarok2_quests_on_quest_type"
+  add_index "ragnarok2_quests", ["recommand_base_level"], :name => "index_ragnarok2_quests_on_recommand_base_level"
 
   create_table "ragnarok2_set_items", :force => true do |t|
     t.integer  "item_set_id", :default => 0, :null => false
