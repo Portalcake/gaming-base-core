@@ -28,7 +28,7 @@
           - if user_signed_in?
             = t ".signed_in_html", :name => link_to(current_user, main_app.edit_user_registration_path)
             \-
-            = link_to t(".sign_out"), main_app.destroy_user_session_path
+            = link_to t(".sign_out"), main_app.destroy_user_session_path, :method => :delete
           - else
             = link_to t(".sign_up"), main_app.new_user_registration_path
             \-

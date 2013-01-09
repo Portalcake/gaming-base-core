@@ -6,6 +6,9 @@ class GuestPermit < CanTango::UserPermit
   protected
 
   def permit_rules
+    can :show, News do |news|
+      news.published?
+    end
   end
 
   module Cached

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104183935) do
+ActiveRecord::Schema.define(:version => 20130109150806) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -197,6 +197,21 @@ ActiveRecord::Schema.define(:version => 20130104183935) do
   add_index "ragnarok2_dungeons", ["dungeon_id"], :name => "index_ragnarok2_dungeons_on_dungeon_id", :unique => true
   add_index "ragnarok2_dungeons", ["quest_id"], :name => "index_ragnarok2_dungeons_on_quest_id"
 
+  create_table "ragnarok2_item_break_results", :force => true do |t|
+    t.integer "result_id"
+    t.integer "grade"
+    t.integer "needed_item_id",       :limit => 8
+    t.integer "needed_item_amount"
+    t.integer "result_item_1_id",     :limit => 8
+    t.integer "result_item_1_amount"
+    t.integer "result_item_1_rate"
+    t.integer "result_item_2_id",     :limit => 8
+    t.integer "result_item_2_amount"
+    t.integer "result_item_2_rate"
+  end
+
+  add_index "ragnarok2_item_break_results", ["result_id"], :name => "index_ragnarok2_item_break_results_on_result_id"
+
   create_table "ragnarok2_item_categories", :force => true do |t|
     t.integer  "category_id",                       :default => 0, :null => false
     t.string   "name_fallback"
@@ -266,6 +281,7 @@ ActiveRecord::Schema.define(:version => 20130104183935) do
     t.datetime "updated_at",                                          :null => false
     t.integer  "category_id"
     t.integer  "weapon_type"
+    t.integer  "item_break_result_id"
   end
 
   add_index "ragnarok2_items", ["item_id"], :name => "index_ragnarok2_items_on_item_id", :unique => true

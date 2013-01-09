@@ -23,4 +23,8 @@ class News < ActiveRecord::Base
   def to_param
     "#{self.id}-#{self.title.parameterize}"
   end
+
+  def published?
+    Time.now>=self.published
+  end
 end
