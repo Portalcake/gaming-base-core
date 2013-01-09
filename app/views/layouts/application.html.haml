@@ -20,6 +20,7 @@
     #container
       #header
         %h1= link_to "Gaming-Base", main_app.dashboard_url
+        %span Unreleased Alpha-Version, please read #{link_to "this announcement", main_app.news_path(20)}
         #subheader= yield :header
 
       - unless Rails.env.production?
