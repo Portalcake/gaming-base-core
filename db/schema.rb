@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109185642) do
+ActiveRecord::Schema.define(:version => 20130110184215) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -565,6 +565,97 @@ ActiveRecord::Schema.define(:version => 20130109185642) do
 
   add_index "ragnarok2_set_traits", ["set_id"], :name => "index_ragnarok2_set_traits_on_set_id"
 
+  create_table "ragnarok2_skill_groups", :force => true do |t|
+    t.integer  "skill_group",            :limit => 8, :null => false
+    t.string   "name_fallback"
+    t.string   "skill_icon"
+    t.integer  "ui_property"
+    t.integer  "check_learn_skill"
+    t.integer  "battle_start"
+    t.integer  "summon_object"
+    t.integer  "max_level"
+    t.integer  "cooltime_group"
+    t.integer  "skill_damage_base"
+    t.integer  "skill_damage_add"
+    t.integer  "skill_damagerate_base"
+    t.integer  "skill_damagerate_add"
+    t.integer  "skill_type"
+    t.integer  "skill_function"
+    t.float    "func_parameter_1"
+    t.float    "func_parameter_2"
+    t.float    "func_parameter_3"
+    t.integer  "icon_type"
+    t.integer  "skill_property"
+    t.integer  "skill_element_type"
+    t.integer  "need_base_level"
+    t.integer  "need_skill_up_level"
+    t.integer  "need_before_skill_id_1", :limit => 8
+    t.integer  "need_before_skill_id_2", :limit => 8
+    t.integer  "need_before_skill_id_3", :limit => 8
+    t.integer  "targeting_object"
+    t.integer  "targeting_actor_id"
+    t.integer  "equip_weapon"
+    t.integer  "use_weapon"
+    t.boolean  "is_jump_use"
+    t.boolean  "is_movable"
+    t.boolean  "is_move_stop"
+    t.integer  "battle_state_change"
+    t.integer  "use_battle"
+    t.integer  "caster_status"
+    t.integer  "target_status"
+    t.integer  "skill_min_range"
+    t.integer  "skill_range"
+    t.integer  "use_trans_time"
+    t.integer  "casting_bar_type"
+    t.integer  "special_cast_basis"
+    t.integer  "influence_target_type"
+    t.integer  "influence_bound_shape"
+    t.float    "influence_bound_length"
+    t.float    "influence_bound_width"
+    t.float    "attack_time"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "ragnarok2_skill_groups", ["name_fallback"], :name => "index_ragnarok2_skill_groups_on_name_fallback"
+  add_index "ragnarok2_skill_groups", ["skill_group"], :name => "index_ragnarok2_skill_groups_on_skill_group", :unique => true
+
+  create_table "ragnarok2_skills", :force => true do |t|
+    t.integer  "skill_id",                     :limit => 8
+    t.string   "name_fallback"
+    t.integer  "skill_group_id",               :limit => 8
+    t.integer  "skill_level"
+    t.integer  "need_skill_money"
+    t.integer  "create_item_id"
+    t.integer  "number_of_create_item"
+    t.integer  "spended_item_id"
+    t.integer  "number_of_spended_item"
+    t.integer  "use_sp"
+    t.integer  "use_hp"
+    t.float    "casting_time"
+    t.float    "minimum_casting_time"
+    t.float    "excution_time"
+    t.float    "cooldown_time"
+    t.float    "effect_duration"
+    t.float    "tick_interval"
+    t.integer  "number_of_normal_influences"
+    t.integer  "number_of_success_influences"
+    t.integer  "skill_damage_quantity"
+    t.integer  "addaggro"
+    t.integer  "addaggrorate"
+    t.float    "aggrorange"
+    t.integer  "string_skill_name",            :limit => 8
+    t.integer  "string_skill_description",     :limit => 8
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  add_index "ragnarok2_skills", ["skill_group_id"], :name => "index_ragnarok2_skills_on_skill_group_id"
+  add_index "ragnarok2_skills", ["skill_id"], :name => "index_ragnarok2_skills_on_skill_id", :unique => true
+  add_index "ragnarok2_skills", ["skill_level"], :name => "index_ragnarok2_skills_on_skill_level"
+  add_index "ragnarok2_skills", ["string_skill_description"], :name => "index_ragnarok2_skills_on_string_skill_description"
+  add_index "ragnarok2_skills", ["string_skill_name"], :name => "index_ragnarok2_skills_on_string_skill_name"
+
   create_table "ragnarok2_traits", :force => true do |t|
     t.integer  "item_id",      :null => false
     t.integer  "nationenable"
@@ -666,6 +757,24 @@ ActiveRecord::Schema.define(:version => 20130109185642) do
   end
 
   add_index "ragnarok2_translations_quests", ["quest_id"], :name => "index_ragnarok2_translations_quests_on_quest_id", :unique => true
+
+  create_table "ragnarok2_translations_skill_descriptions", :force => true do |t|
+    t.integer  "skill_id"
+    t.string   "translation"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "ragnarok2_translations_skill_descriptions", ["skill_id"], :name => "sid", :unique => true
+
+  create_table "ragnarok2_translations_skill_names", :force => true do |t|
+    t.integer  "skill_id"
+    t.string   "translation"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "ragnarok2_translations_skill_names", ["skill_id"], :name => "sid", :unique => true
 
   create_table "ragnarok2_translations_trait_names", :force => true do |t|
     t.integer  "trait_id",    :limit => 8, :default => 0, :null => false

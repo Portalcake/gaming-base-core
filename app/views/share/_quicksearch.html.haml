@@ -1,7 +1,11 @@
+- preserve_params ||= []
+
 .quick_search
   = form_tag({}, :method => "get") do
     = label_tag(:q, "Search for:")
     = text_field_tag(:q, params[:q], :placeholder => "Name")
+    - preserve_params.each do |key|
+      = hidden_field_tag key.to_s, params[key], :id=>key
     = submit_tag("Search")
     = link_to "clear filter", params.except(:q, :page, :commit, :utf8)
 %br
