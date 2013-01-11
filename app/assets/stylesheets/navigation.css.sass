@@ -26,19 +26,19 @@ $subnav_active_background: #CCCCCC
       margin: 0
       padding: 0
       
-      a
+      a, span
         float: left
         font-size: 10pt
         font-weight: normal
         margin: 0px 2px 0px
         padding: 4px 8px
+        text-decoration: none
+      a
         background-color: $tabs_background
         color: $tabs_color
-        text-decoration: none
         border-radius: 3px 3px 0px 0px
         &:hover
           background-color: $tabs_hover_background
-      
       a.selected
         background-color: $tabs_active_background
 
@@ -55,19 +55,20 @@ $subnav_active_background: #CCCCCC
     margin: 0
     padding: 0
      
-    a
+    a, span
       float: right
       font-size: 10pt
       font-weight: normal
       margin: 0
       padding: 2px 8px 4px
       margin: 2px 0px 2px
-      background-color: $subnav_background
-      color: $subnav_color
       text-decoration: none
-      border-radius: 3px 0px 0px 3px
       width: 100%
       text-align: right
+    a
+      border-radius: 3px 0px 0px 3px
+      background-color: $subnav_background
+      color: $subnav_color
         
       &:hover
         background-color: $subnav_hover_background

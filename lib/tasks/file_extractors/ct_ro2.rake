@@ -42,7 +42,7 @@
 #  9 == [4, float]
 #     > Custom_ZoomInfo, JobInfo, RidingInfo, Monster, Map_List
 # 11 == [8, float]
-#     > BaseExpTable
+#     > BaseExpTable, ItemInfo
 # 12 == [1, uint]
 #     > NPCInfo
 

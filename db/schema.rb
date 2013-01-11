@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110184215) do
+ActiveRecord::Schema.define(:version => 20130111200521) do
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false
@@ -229,6 +229,16 @@ ActiveRecord::Schema.define(:version => 20130110184215) do
     t.integer  "items_count",                       :default => 0, :null => false
   end
 
+  create_table "ragnarok2_item_jobs", :force => true do |t|
+    t.integer  "item_id"
+    t.integer  "job_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ragnarok2_item_jobs", ["item_id"], :name => "index_ragnarok2_item_jobs_on_item_id"
+  add_index "ragnarok2_item_jobs", ["job_id"], :name => "index_ragnarok2_item_jobs_on_job_id"
+
   create_table "ragnarok2_item_sets", :force => true do |t|
     t.integer  "set_id",                  :default => 0, :null => false
     t.integer  "string_id",  :limit => 8, :default => 0, :null => false
@@ -292,6 +302,26 @@ ActiveRecord::Schema.define(:version => 20130110184215) do
   add_index "ragnarok2_items", ["item_id"], :name => "index_ragnarok2_items_on_item_id", :unique => true
   add_index "ragnarok2_items", ["require_level"], :name => "index_ragnarok2_items_on_require_level"
   add_index "ragnarok2_items", ["string_item_description"], :name => "index_ragnarok2_items_on_string_item_description"
+
+  create_table "ragnarok2_jobs", :force => true do |t|
+    t.integer  "job_id",                              :null => false
+    t.string   "name_fallback"
+    t.integer  "string_job_name",        :limit => 8
+    t.integer  "string_job_description", :limit => 8
+    t.integer  "job_category"
+    t.integer  "job_type"
+    t.integer  "base_job_id"
+    t.integer  "arm_length"
+    t.float    "global_cooldown_time"
+    t.integer  "threat_modifier"
+    t.integer  "job_color"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "ragnarok2_jobs", ["job_id"], :name => "index_ragnarok2_jobs_on_job_id", :unique => true
+  add_index "ragnarok2_jobs", ["string_job_description"], :name => "index_ragnarok2_jobs_on_string_job_description"
+  add_index "ragnarok2_jobs", ["string_job_name"], :name => "index_ragnarok2_jobs_on_string_job_name"
 
   create_table "ragnarok2_map_dungeons", :force => true do |t|
     t.integer  "map_id"
