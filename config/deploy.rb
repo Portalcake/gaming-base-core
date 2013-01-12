@@ -99,14 +99,6 @@ namespace :subpages do
       run "cd #{release_path}/subpages/#{subopts[:token]} && git clone #{subpages_base_repository.gsub("%subpage_token%", subopts[:token])} ." if subopts[:active]
     end
   end
-
-  desc "Makes sure that all subpage migrations are added to the main page"
-  task :migrate , :except => { :no_release => true } do
-    available_subpages.each do |subopts|
-      next unless subopts[:active]
-      run "cd #{release_path} && bundle exec rake #{subopts[:engine]}:install:migrations RAILS_ENV=production"
-    end
-  end
 end
 
 after "deploy:setup", "db:setup"
@@ -116,5 +108,4 @@ after "deploy:finalize_update", "db:symlink"
 after "whenever:update_crontab", "gameclients:symlink"
 after "whenever:update_crontab", "subpages:setup"
 after "deploy:finalize_update", "games:symlink"
-after "deploy:finalize_update", "subpages:migrate"
 after "deploy", "deploy:migrate"
