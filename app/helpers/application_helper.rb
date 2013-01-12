@@ -19,6 +19,8 @@ module ApplicationHelper
         n.item :news_games, "Game news", games_news_index_path
         n.item :news_add, "Create News", new_news_path, :if => Proc.new { user_can?(:create, News) }
       end
+      primary.item :forum, "Forum", forum.topics_path
+      primary.item :game_placeholder, "", :class=>"placeholder"
       primary.item :ro2, "Ragnarok 2", ragnarok2.root_path
       #primary.item :rose, "Rose", rose.root_path
     end

@@ -1,5 +1,6 @@
 Gamingbase::Application.routes.draw do
 
+  mount Forum::Engine => "/"
   mount Rose::Engine => "/"
   mount Ragnarok2::Engine => "/"
 
@@ -27,6 +28,12 @@ Gamingbase::Application.routes.draw do
       collection do
         get :games
         get :gaming_base
+      end
+    end
+
+    namespace :forum do
+      resources :threads do
+        resources :posts
       end
     end
 

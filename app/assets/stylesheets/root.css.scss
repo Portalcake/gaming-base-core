@@ -136,8 +136,14 @@ div#content-wrapper {
       padding-bottom: 2px;
     } }
   & #footer {
+    padding-bottom:20px;
+    margin-left: 160px;
     color: gray;
     text-align: right;
+    & #adsense {
+      float:left;
+      padding-top:5px;
+    }
   } }
 
 .odd, .even {
@@ -150,10 +156,12 @@ div#content-wrapper {
   background-color: #eee;
 }
 
-.error, .notice, #notice, #error {
-  background-color: $white;
-  padding:2px 5px 2px 9px;
-  margin-bottom:10px; }
+#content {
+  & > .error, & > .notice, & > #notice, & > #error {
+    background-color: white;
+    padding:2px 5px 2px 9px;
+    margin-bottom:10px; }
+}
 .notice, #notice {
   color: green; }
 .error, #error {

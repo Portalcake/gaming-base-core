@@ -58,6 +58,8 @@ end
 gem 'jquery-rails'
 
 
+#subpages
+gem 'forum', :path => "subpages/forum"
 #games related subpages
 gem 'ragnarok2', :path => "subpages/game-ro2"
 gem 'rose', :path => "subpages/game-rose"

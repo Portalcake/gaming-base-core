@@ -11,7 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111200521) do
+ActiveRecord::Schema.define(:version => 20130112131860) do
+
+  create_table "forum_posts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "forum_posts", ["topic_id"], :name => "index_forum_posts_on_topic_id"
+  add_index "forum_posts", ["user_id"], :name => "index_forum_posts_on_user_id"
+
+  create_table "forum_topics", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "last_user_id"
+    t.datetime "last_post_at"
+    t.boolean  "closed"
+    t.integer  "posts_count",  :default => 0, :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "forum_topics", ["last_post_at"], :name => "index_forum_topics_on_last_post_at"
+  add_index "forum_topics", ["posts_count"], :name => "index_forum_topics_on_posts_count"
+  add_index "forum_topics", ["user_id"], :name => "index_forum_topics_on_user_id"
 
   create_table "games", :force => true do |t|
     t.string   "name",        :default => "",    :null => false

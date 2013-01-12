@@ -1,4 +1,10 @@
 PATH
+  remote: subpages/forum
+  specs:
+    forum (0.0.1)
+      rails (~> 3.2.11)
+
+PATH
   remote: subpages/game-ro2
   specs:
     ragnarok2 (0.0.1)
@@ -211,6 +217,7 @@ DEPENDENCIES
   devise-i18n
   feedzirra (~> 0.0)
   formtastic
+  forum!
   haml
   jquery-rails
   mysql2

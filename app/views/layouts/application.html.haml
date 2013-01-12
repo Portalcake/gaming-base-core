@@ -23,17 +23,18 @@
         %span Unreleased Alpha-Version, please read #{link_to "this announcement", main_app.news_path(20)}
         #subheader= yield :header
 
-      - unless Rails.env.production?
-        #login
-          - if user_signed_in?
-            = t ".signed_in_html", :name => link_to(current_user, main_app.edit_user_registration_path)
-            \-
-            = link_to t(".sign_out"), main_app.destroy_user_session_path, :method => :delete
-          - else
-            = link_to t(".sign_up"), main_app.new_user_registration_path
-            \-
-            = link_to t(".sign_in"), main_app.new_user_session_path
+
+      #login
+        - if user_signed_in?
+          = t ".signed_in_html", :name => link_to(current_user, main_app.edit_user_registration_path)
+          \-
+          = link_to t(".sign_out"), main_app.destroy_user_session_path, :method => :delete
+        - else
+          = link_to t(".sign_up"), main_app.new_user_registration_path
+          \-
+          = link_to t(".sign_in"), main_app.new_user_session_path
       
+      - unless Rails.env.production?
         - content_for :left_page_boxes do
           #locale_chooser
             .box_title Webpage Language
@@ -62,7 +63,11 @@
             #error= yield :alert
           = content_for?(:content) ? yield(:content) : yield
 
+
         #footer
+          - if Rails.env.production?
+            #adsense=render "share/google_adsense"
+
           #bugtracker
             If you find any bugs please write a
             = link_to_blank "ticket", "http://dev.gaming-base.net"

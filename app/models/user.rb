@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
 
   has_many :news, :dependent => :nullify
+  has_many :posts, :dependent => :nullify
+  has_many :topics, :dependent => :nullify
 
   def self.guest
     session[:guest_user] ||= Guest.new # create Guest model (usually not to be persisted!)

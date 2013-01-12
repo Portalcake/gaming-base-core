@@ -22,6 +22,11 @@ set :available_subpages, [
     :token => "game-rose",
     :engine => "rose",
     :active => true
+  },
+  {
+    :token => "forum",
+    :engine => "forum",
+    :active => true
   }
 ]
 set :subpages_base_repository, "file:///home/gaming-base-dev/public_html/git/%subpage_token%.git"

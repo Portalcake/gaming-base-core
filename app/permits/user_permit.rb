@@ -6,6 +6,13 @@ class UserPermit < CanTango::UserPermit
   protected
 
   def permit_rules
+    can :update, Forum::Topic do |t|
+      t.user = user
+    end
+    can :update, Forum::Post do |t|
+      t.user = user
+    end
+    can :create, [Forum::Topic, Forum::Post]
   end
 
   module Cached
