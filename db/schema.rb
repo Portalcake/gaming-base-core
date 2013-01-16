@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112131860) do
+ActiveRecord::Schema.define(:version => 20130116195420) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130112131860) do
     t.integer  "posts_count",  :default => 0, :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+    t.integer  "views_count",  :default => 0, :null => false
   end
 
   add_index "forum_topics", ["last_post_at"], :name => "index_forum_topics_on_last_post_at"
