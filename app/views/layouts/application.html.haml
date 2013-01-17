@@ -18,9 +18,12 @@
   %body
 
     #container
+      #devnotice Unreleased Alpha-Version, please read #{link_to "this announcement", main_app.news_path(20)}
       #header
         %h1= link_to "Gaming-Base", main_app.dashboard_url
-        %span Unreleased Alpha-Version, please read #{link_to "this announcement", main_app.news_path(20)}
+        - unless content_for? :header
+          - content_for :header do
+            Main Page
         #subheader= yield :header
 
 

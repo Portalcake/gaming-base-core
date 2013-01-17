@@ -2,11 +2,12 @@
 
 html, body {
   height:100%;
-  padding: 7px 10px; }
-
+  margin:0px;
+}
 body {
-  background: none repeat scroll 0 0 #F7F7F7;
+  padding:10px;
   color: #333333;
+  background: none repeat scroll 0 0 #FCFCFC;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 10px;
   text-align: left;
@@ -14,7 +15,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: #334455;
-  font-weight: bold; }
+  font-weight: bold;}
 h1 {
   font-size:120%; }
 h2 {
@@ -36,13 +37,15 @@ form .actions input {
 }
 
 #header {
-  margin: 10px 0px 20px 0px;
+  padding:10px 10px 40px 10px;
+  margin: 0px 0px 20px 0px;
   & #subheader {
     font-size:120%;
   }
   & h1 {
     font-size: 300%;
-    margin:10px 0px;
+    margin:0px 0px 10px 0px;
+    text-shadow: 0 1px 0 #FFFFFF, 1px 2px 2px #AAAAAA;
     & a {
       color: inherit; } } }
 
@@ -121,9 +124,21 @@ form .actions input {
       color: $red;
       background-image: url("icons/colorized/folder_delete.png"); } } }
 
+#container {
+  padding-right:15px;
+  background-repeat: no-repeat;
+  background-position: 30px 0px;
+  background-image: url("header.png");
+}
+
+#devnotice {
+    float:right;
+}
+
 div#content-wrapper {
   padding-bottom:50px;
   & #content {
+    background: none repeat scroll 0 0 #F7F7F7;
     padding: 8px;
     border-style: solid;
     border-color: #CCCCCC;
