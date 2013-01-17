@@ -31,6 +31,8 @@ Gamingbase::Application.routes.draw do
       end
     end
 
+    get "missing_information" => "dashboard#missing_information", :as => :missing_information
+
     namespace :forum do
       resources :threads do
         resources :posts

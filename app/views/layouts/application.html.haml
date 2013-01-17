@@ -18,7 +18,10 @@
   %body
 
     #container
-      #devnotice Unreleased Alpha-Version, please read #{link_to "this announcement", main_app.news_path(20)}
+      #devnotice
+        Unreleased Alpha-Version, please read #{link_to "this announcement", main_app.news_path(20)}
+        %br
+        Missing information? #{link_to "Please help!", main_app.missing_information_path}
       #header
         %h1= link_to "Gaming-Base", main_app.dashboard_url
         - unless content_for? :header

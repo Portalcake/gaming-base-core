@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116195420) do
+ActiveRecord::Schema.define(:version => 20130117185644) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -349,6 +349,84 @@ ActiveRecord::Schema.define(:version => 20130116195420) do
   add_index "ragnarok2_jobs", ["job_id"], :name => "index_ragnarok2_jobs_on_job_id", :unique => true
   add_index "ragnarok2_jobs", ["string_job_description"], :name => "index_ragnarok2_jobs_on_string_job_description"
   add_index "ragnarok2_jobs", ["string_job_name"], :name => "index_ragnarok2_jobs_on_string_job_name"
+
+  create_table "ragnarok2_khara_titles", :force => true do |t|
+    t.integer  "title_id",                                 :default => 0, :null => false
+    t.integer  "grade_type"
+    t.integer  "option_1",                    :limit => 8
+    t.integer  "option_2",                    :limit => 8
+    t.integer  "option_3",                    :limit => 8
+    t.integer  "string_title_name_id"
+    t.integer  "string_title_description_id"
+    t.integer  "string_title_detail_desc_id"
+    t.string   "emblem_path"
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+  end
+
+  add_index "ragnarok2_khara_titles", ["title_id"], :name => "index_ragnarok2_khara_titles_on_title_id", :unique => true
+
+  create_table "ragnarok2_kharas", :force => true do |t|
+    t.integer  "quest_id"
+    t.integer  "quest_type"
+    t.integer  "auto_challenge"
+    t.integer  "board_number"
+    t.integer  "grid_number"
+    t.integer  "icon"
+    t.integer  "reward_npc_id",        :limit => 8
+    t.integer  "pc_job"
+    t.integer  "min_base_level"
+    t.integer  "max_base_level"
+    t.integer  "pc_projob"
+    t.integer  "min_projob_level"
+    t.integer  "max_projob_level"
+    t.integer  "min_khara_point"
+    t.integer  "max_khara_point"
+    t.integer  "giveup"
+    t.integer  "need_quest_id",        :limit => 8
+    t.integer  "need_quest_status"
+    t.integer  "need_khara_point"
+    t.integer  "prohibition_quest_id"
+    t.integer  "need_start_time"
+    t.integer  "need_end_time"
+    t.integer  "quest_flag"
+    t.integer  "limit_time"
+    t.integer  "reward_auto"
+    t.integer  "reward_khara_point"
+    t.integer  "reward_honor_point"
+    t.integer  "reward_title_id"
+    t.integer  "condition_type"
+    t.integer  "condition_value1"
+    t.integer  "condition_value2"
+    t.integer  "condition_value3"
+    t.integer  "error_msg_id",         :limit => 8
+    t.integer  "action_sequence"
+    t.integer  "active_type"
+    t.integer  "action_type"
+    t.integer  "action_value1"
+    t.integer  "action_value2"
+    t.integer  "action_value3"
+    t.integer  "action_value4"
+    t.integer  "action_value5"
+    t.integer  "complete_type"
+    t.integer  "complete_type_value1", :limit => 8
+    t.integer  "complete_type_value2", :limit => 8
+    t.integer  "complete_type_value3", :limit => 8
+    t.integer  "complete_type_value4", :limit => 8
+    t.integer  "complete_type_value5", :limit => 8
+    t.integer  "complete_desc_id",     :limit => 8
+    t.integer  "fail_type"
+    t.integer  "fail_type_value1"
+    t.integer  "fail_type_value2"
+    t.integer  "fail_type_value3"
+    t.integer  "fail_type_value4"
+    t.integer  "fail_type_value5"
+    t.integer  "fail_desc_id",         :limit => 8
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  add_index "ragnarok2_kharas", ["quest_id"], :name => "index_ragnarok2_kharas_on_quest_id"
 
   create_table "ragnarok2_map_dungeons", :force => true do |t|
     t.integer  "map_id"
@@ -798,6 +876,16 @@ ActiveRecord::Schema.define(:version => 20130116195420) do
   end
 
   add_index "ragnarok2_translations_job_names", ["job_id"], :name => "jid", :unique => true
+
+  create_table "ragnarok2_translations_kharas", :force => true do |t|
+    t.integer  "quest_id",   :default => 0, :null => false
+    t.string   "title"
+    t.string   "summary"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "ragnarok2_translations_kharas", ["quest_id"], :name => "index_ragnarok2_translations_kharas_on_quest_id", :unique => true
 
   create_table "ragnarok2_translations_quests", :force => true do |t|
     t.integer  "quest_id",      :limit => 8, :default => 0, :null => false

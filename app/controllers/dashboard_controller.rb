@@ -16,4 +16,8 @@ class DashboardController < ApplicationController
       }
     end
   end
+
+  def missing_information
+    respond_with
+  end
 end
