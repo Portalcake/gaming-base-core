@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale, :set_user_time_zone
 
   def url_options
-    { :locale => I18n.locale }.merge(super)
+    { :locale => I18n.locale, :debug=>params[:debug] }.merge(super)
   end
 
   private

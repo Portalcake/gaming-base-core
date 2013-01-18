@@ -1,4 +1,4 @@
-- return '' if Rails.env.production?
+- return '' unless user_can?(:show, :debug_information) && params[:debug]
 .development_box
   .box
     %span.title Development-Information (#{model.class.name})
