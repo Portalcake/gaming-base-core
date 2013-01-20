@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120130334) do
+ActiveRecord::Schema.define(:version => 20130120190938) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -242,6 +242,19 @@ ActiveRecord::Schema.define(:version => 20130120130334) do
   end
 
   add_index "ragnarok2_item_break_results", ["result_id"], :name => "index_ragnarok2_item_break_results_on_result_id"
+
+  create_table "ragnarok2_item_cash_infos", :force => true do |t|
+    t.integer  "item_id",                  :limit => 8, :default => 0, :null => false
+    t.integer  "cash_type"
+    t.integer  "content_type"
+    t.integer  "duration_type"
+    t.integer  "duration_value"
+    t.integer  "duration_extend_group_id"
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+  end
+
+  add_index "ragnarok2_item_cash_infos", ["item_id"], :name => "index_ragnarok2_item_cash_infos_on_item_id", :unique => true
 
   create_table "ragnarok2_item_categories", :force => true do |t|
     t.integer  "category_id",                       :default => 0, :null => false
