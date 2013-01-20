@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120103406) do
+ActiveRecord::Schema.define(:version => 20130120130334) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -256,6 +256,8 @@ ActiveRecord::Schema.define(:version => 20130120103406) do
     t.integer  "items_count",                       :default => 0, :null => false
   end
 
+  add_index "ragnarok2_item_categories", ["high_category", "medium_category", "low_category"], :name => "categories_indices", :unique => true
+
   create_table "ragnarok2_item_jobs", :force => true do |t|
     t.integer  "item_id"
     t.integer  "job_id"
@@ -324,6 +326,7 @@ ActiveRecord::Schema.define(:version => 20130120103406) do
     t.integer  "item_break_result_id"
   end
 
+  add_index "ragnarok2_items", ["high_category_id", "medium_category_id", "low_category_id"], :name => "categories_indices"
   add_index "ragnarok2_items", ["item_id"], :name => "index_ragnarok2_items_on_item_id", :unique => true
   add_index "ragnarok2_items", ["require_level"], :name => "index_ragnarok2_items_on_require_level"
   add_index "ragnarok2_items", ["string_item_description"], :name => "index_ragnarok2_items_on_string_item_description"
