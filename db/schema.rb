@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130118102005) do
+ActiveRecord::Schema.define(:version => 20130120103406) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -306,9 +306,9 @@ ActiveRecord::Schema.define(:version => 20130118102005) do
     t.boolean  "is_sell"
     t.boolean  "is_trade"
     t.boolean  "is_compose"
-    t.integer  "high_category"
-    t.integer  "medium_category"
-    t.integer  "low_category"
+    t.integer  "high_category_id"
+    t.integer  "medium_category_id"
+    t.integer  "low_category_id"
     t.integer  "string_item_name",        :limit => 8
     t.integer  "string_item_description", :limit => 8
     t.string   "mesh"
@@ -320,12 +320,10 @@ ActiveRecord::Schema.define(:version => 20130118102005) do
     t.string   "icon"
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
-    t.integer  "category_id"
     t.integer  "weapon_type"
     t.integer  "item_break_result_id"
   end
 
-  add_index "ragnarok2_items", ["category_id"], :name => "index_ragnarok2_items_on_category_id"
   add_index "ragnarok2_items", ["item_id"], :name => "index_ragnarok2_items_on_item_id", :unique => true
   add_index "ragnarok2_items", ["require_level"], :name => "index_ragnarok2_items_on_require_level"
   add_index "ragnarok2_items", ["string_item_description"], :name => "index_ragnarok2_items_on_string_item_description"
