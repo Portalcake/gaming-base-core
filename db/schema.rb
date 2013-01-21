@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121085625) do
+ActiveRecord::Schema.define(:version => 20130121201604) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -454,6 +454,7 @@ ActiveRecord::Schema.define(:version => 20130121085625) do
   end
 
   add_index "ragnarok2_kharas", ["quest_id"], :name => "index_ragnarok2_kharas_on_quest_id"
+  add_index "ragnarok2_kharas", ["quest_type"], :name => "index_ragnarok2_kharas_on_quest_type"
 
   create_table "ragnarok2_map_dungeons", :force => true do |t|
     t.integer  "map_id"
