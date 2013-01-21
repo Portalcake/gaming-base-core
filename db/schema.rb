@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120190938) do
+ActiveRecord::Schema.define(:version => 20130121085625) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -363,6 +363,19 @@ ActiveRecord::Schema.define(:version => 20130120190938) do
   add_index "ragnarok2_jobs", ["job_id"], :name => "index_ragnarok2_jobs_on_job_id", :unique => true
   add_index "ragnarok2_jobs", ["string_job_description"], :name => "index_ragnarok2_jobs_on_string_job_description"
   add_index "ragnarok2_jobs", ["string_job_name"], :name => "index_ragnarok2_jobs_on_string_job_name"
+
+  create_table "ragnarok2_khara_reward_titles", :force => true do |t|
+    t.integer  "title_id",                     :null => false
+    t.integer  "attribute_str", :default => 0
+    t.integer  "attribute_dex", :default => 0
+    t.integer  "attribute_wil", :default => 0
+    t.integer  "attribute_vit", :default => 0
+    t.integer  "attribute_int", :default => 0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "ragnarok2_khara_reward_titles", ["title_id"], :name => "index_ragnarok2_khara_reward_titles_on_title_id", :unique => true
 
   create_table "ragnarok2_khara_titles", :force => true do |t|
     t.integer  "title_id",                                 :default => 0, :null => false
@@ -892,6 +905,17 @@ ActiveRecord::Schema.define(:version => 20130120190938) do
   end
 
   add_index "ragnarok2_translations_job_names", ["job_id"], :name => "jid", :unique => true
+
+  create_table "ragnarok2_translations_khara_reward_titles", :force => true do |t|
+    t.integer  "title_id",          :null => false
+    t.string   "title"
+    t.string   "description_short"
+    t.string   "description_long"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "ragnarok2_translations_khara_reward_titles", ["title_id"], :name => "index_ragnarok2_translations_khara_reward_titles_on_title_id", :unique => true
 
   create_table "ragnarok2_translations_kharas", :force => true do |t|
     t.integer  "quest_id",   :default => 0, :null => false
