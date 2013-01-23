@@ -13,6 +13,8 @@ class UserPermit < CanTango::UserPermit
       t.user = user
     end
     can :create, [Forum::Topic, Forum::Post]
+
+    can [:create, :vote], Ragnarok2::CitizenDrop
   end
 
   module Cached

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121201604) do
+ActiveRecord::Schema.define(:version => 20130123161819) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -92,6 +92,33 @@ ActiveRecord::Schema.define(:version => 20130121201604) do
   end
 
   add_index "ragnarok2_base_exps", ["base_level"], :name => "index_ragnarok2_base_exps_on_base_level", :unique => true
+
+  create_table "ragnarok2_citizen_drop_users", :force => true do |t|
+    t.integer  "citizen_drop_id"
+    t.integer  "user_id"
+    t.boolean  "approved",        :default => true, :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  add_index "ragnarok2_citizen_drop_users", ["citizen_drop_id", "user_id"], :name => "cuid", :unique => true
+  add_index "ragnarok2_citizen_drop_users", ["citizen_drop_id"], :name => "index_ragnarok2_citizen_drop_users_on_citizen_drop_id"
+  add_index "ragnarok2_citizen_drop_users", ["user_id"], :name => "index_ragnarok2_citizen_drop_users_on_user_id"
+
+  create_table "ragnarok2_citizen_drops", :force => true do |t|
+    t.integer  "citizen_id"
+    t.integer  "item_id"
+    t.integer  "approving_users_count",    :default => 0, :null => false
+    t.integer  "disapproving_users_count", :default => 0, :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  add_index "ragnarok2_citizen_drops", ["approving_users_count"], :name => "index_ragnarok2_citizen_drops_on_approving_users_count"
+  add_index "ragnarok2_citizen_drops", ["citizen_id", "item_id"], :name => "ciid"
+  add_index "ragnarok2_citizen_drops", ["citizen_id"], :name => "index_ragnarok2_citizen_drops_on_citizen_id"
+  add_index "ragnarok2_citizen_drops", ["disapproving_users_count"], :name => "index_ragnarok2_citizen_drops_on_disapproving_users_count"
+  add_index "ragnarok2_citizen_drops", ["item_id"], :name => "index_ragnarok2_citizen_drops_on_item_id"
 
   create_table "ragnarok2_citizen_items", :force => true do |t|
     t.integer  "citizen_id", :limit => 8, :default => 0, :null => false
