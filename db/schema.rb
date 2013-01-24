@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123161819) do
+ActiveRecord::Schema.define(:version => 20130124101056) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -233,6 +233,38 @@ ActiveRecord::Schema.define(:version => 20130123161819) do
   add_index "ragnarok2_citizens", ["min_level"], :name => "index_ragnarok2_citizens_on_min_level"
   add_index "ragnarok2_citizens", ["string_job_name_id"], :name => "index_ragnarok2_citizens_on_string_job_name_id"
   add_index "ragnarok2_citizens", ["string_name_id"], :name => "index_ragnarok2_citizens_on_string_name_id"
+
+  create_table "ragnarok2_craft_infos", :force => true do |t|
+    t.integer  "craft_info_id",                  :null => false
+    t.integer  "craft_learntype"
+    t.integer  "protype_id"
+    t.integer  "craft_itemtype_id"
+    t.integer  "craft_item_id",     :limit => 8
+    t.integer  "craft_item_amount"
+    t.integer  "craft_level"
+    t.integer  "craft_needsp"
+    t.integer  "craftexp"
+    t.integer  "crafttime_sec"
+    t.integer  "cooltime_min"
+    t.integer  "positiongroup"
+    t.integer  "learn_needmoney"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "ragnarok2_craft_infos", ["craft_info_id"], :name => "index_ragnarok2_craft_infos_on_craft_info_id", :unique => true
+  add_index "ragnarok2_craft_infos", ["craft_item_id"], :name => "index_ragnarok2_craft_infos_on_craft_item_id"
+
+  create_table "ragnarok2_craft_materials", :force => true do |t|
+    t.integer "craft_info_id",                             :null => false
+    t.integer "item_id",       :limit => 8,                :null => false
+    t.integer "material_id",   :limit => 8,                :null => false
+    t.integer "amount",                     :default => 1, :null => false
+  end
+
+  add_index "ragnarok2_craft_materials", ["craft_info_id"], :name => "index_ragnarok2_craft_materials_on_craft_info_id"
+  add_index "ragnarok2_craft_materials", ["item_id"], :name => "index_ragnarok2_craft_materials_on_item_id"
+  add_index "ragnarok2_craft_materials", ["material_id"], :name => "index_ragnarok2_craft_materials_on_material_id"
 
   create_table "ragnarok2_dungeons", :force => true do |t|
     t.integer  "dungeon_id",                    :default => 0, :null => false
