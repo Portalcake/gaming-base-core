@@ -36,9 +36,7 @@ class ApplicationController < ActionController::Base
   def record_not_found
     respond_to do |format|
       format.html {
-        redirect_to redirect_on_error,
-          :alert => 'The page you requested could not be found.',
-          :status => :not_found
+          render :template=>'share/record_not_found', :status => :not_found
       }
       format.json { head :not_found }
     end
@@ -48,6 +46,8 @@ class ApplicationController < ActionController::Base
   def redirect_on_error
     main_app.root_url
   end
+
+  helper_method :redirect_on_error
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to redirect_on_error, :alert => exception.message
