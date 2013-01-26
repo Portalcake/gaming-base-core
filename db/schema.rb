@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124101056) do
+ActiveRecord::Schema.define(:version => 20130126085432) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -764,6 +764,19 @@ ActiveRecord::Schema.define(:version => 20130124101056) do
   add_index "ragnarok2_quests", ["quest_id"], :name => "index_ragnarok2_quests_on_quest_id", :unique => true
   add_index "ragnarok2_quests", ["quest_type"], :name => "index_ragnarok2_quests_on_quest_type"
   add_index "ragnarok2_quests", ["recommand_base_level"], :name => "index_ragnarok2_quests_on_recommand_base_level"
+
+  create_table "ragnarok2_random_sets", :force => true do |t|
+    t.integer "random_set_id",              :null => false
+    t.integer "setbox_type"
+    t.integer "item_id",       :limit => 8, :null => false
+    t.integer "package"
+    t.integer "ratio"
+    t.integer "broadcast"
+  end
+
+  add_index "ragnarok2_random_sets", ["item_id"], :name => "index_ragnarok2_random_sets_on_item_id"
+  add_index "ragnarok2_random_sets", ["random_set_id"], :name => "index_ragnarok2_random_sets_on_random_set_id"
+  add_index "ragnarok2_random_sets", ["ratio"], :name => "index_ragnarok2_random_sets_on_ratio"
 
   create_table "ragnarok2_set_items", :force => true do |t|
     t.integer  "item_set_id", :default => 0, :null => false
