@@ -32,7 +32,7 @@ gem 'formtastic'
 gem 'simple-navigation'
 
 #used for extracting assets (e.g. icons) from game files
-gem 'rmagick'
+gem 'mini_magick'
 
 #rss/feed parser
 gem 'feedzirra', '~> 0.0'
