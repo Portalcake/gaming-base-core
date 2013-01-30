@@ -129,6 +129,7 @@ form .actions input {
   background-repeat: no-repeat;
   background-position: 30px 0px;
   background-image: url("header.png");
+  min-width: 930px;
 }
 
 #devnotice {
@@ -233,23 +234,35 @@ span.booleanize_true {
   color: green;
 }
 
-.box {
-  padding-bottom: 5px;
-  position: relative;
-  z-index: 1;  
-  &:before {
-    border-top: 1px solid #DDDDDD;
-    content:"";
-    margin: 0 auto;
-    position: absolute;
-    top: 7px; left: 0; right: 0; bottom: 0;
-    width: 95%;
-    z-index: -1;
+
+.twin_boxes {
+  overflow: auto;
+  .box_left {
+    float:left;
   }
+  .box_right {
+    float:right;
+  }
+  .box_right, .box_left {
+    width:49%;
+    display:inline-block;
+
+  }
+}
+
+
+.box {
+  margin-bottom: 5px;
+  padding:2px;
+  border: 1px solid #E0E0E0;
+  border-radius: 2px;
   & span.title {
     background: #F7F7F7;
     font-weight: bold;
     padding-right: 5px;
+  }
+  .tools {
+    float:right;
   }
 }
 
