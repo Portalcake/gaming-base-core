@@ -20,25 +20,27 @@ gem 'whenever', :require => false
 
 #file attachments
 gem 'paperclip', '~> 3.0'
-gem 'paperclip-meta'
+gem 'paperclip-meta', '~> 0.4'
 
 #pagination
 gem 'will_paginate', '~> 3.0'
 
 #form-helper
-gem 'formtastic'
+gem 'formtastic', '~> 2.0'
 
 #navigation helper
-gem 'simple-navigation'
+gem 'simple-navigation', '~> 3.10'
 
 #used for extracting assets (e.g. icons) from game files
-gem 'mini_magick'
+gem 'mini_magick', '~> 3.4'
 
 #rss/feed parser
 gem 'feedzirra', '~> 0.0'
 
 #markdown requirement
-gem 'rdiscount'
+gem 'rdiscount', '~> 1.6'
+#bbcode
+gem 'bb-ruby', '~> 0.9'
 
 # Gems used only for assets and not required
 # in production environments by default.

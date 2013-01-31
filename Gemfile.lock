@@ -47,6 +47,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    bb-ruby (0.9.8)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
     cancan (1.6.8)
@@ -72,14 +73,14 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     curb (0.7.18)
-    devise (2.2.2)
+    devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
     devise-encryptable (0.1.1)
       devise (>= 2.1.0.rc)
-    devise-i18n (0.5.12)
+    devise-i18n (0.6.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -139,7 +140,7 @@ GEM
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-ssl (1.3.2)
+    rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -173,7 +174,7 @@ GEM
       tilt (~> 1.3)
     sax-machine (0.0.20)
       nokogiri (> 0.0.0)
-    simple-navigation (3.9.0)
+    simple-navigation (3.10.0)
       activesupport (>= 2.3.2)
     simple_roles (0.0.8)
       activerecord
@@ -193,7 +194,7 @@ GEM
     therubyracer (0.11.3)
       libv8 (~> 3.11.8.12)
       ref
-    thor (0.16.0)
+    thor (0.17.0)
     tilt (1.3.3)
     treetop (1.4.12)
       polyglot
@@ -213,6 +214,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bb-ruby (~> 0.9)
   cantango
   capistrano
   coffee-rails (~> 3.2.1)
@@ -220,22 +222,22 @@ DEPENDENCIES
   devise-encryptable
   devise-i18n
   feedzirra (~> 0.0)
-  formtastic
+  formtastic (~> 2.0)
   forum!
   haml
   jquery-rails
-  mini_magick
+  mini_magick (~> 3.4)
   mysql2
   normalize-rails
   paperclip (~> 3.0)
-  paperclip-meta
+  paperclip-meta (~> 0.4)
   ragnarok2!
   rails (= 3.2.11)
-  rdiscount
+  rdiscount (~> 1.6)
   rose!
   rvm-capistrano
   sass-rails (~> 3.2.3)
-  simple-navigation
+  simple-navigation (~> 3.10)
   simple_roles
   therubyracer
   uglifier (>= 1.0.3)
