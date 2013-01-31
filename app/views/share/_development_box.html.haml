@@ -1,7 +1,7 @@
 - return '' unless user_can?(:show, :debug_information) && params[:debug]
 .development_box
   .box
-    %span.title Development-Information (#{model.class.name})
+    .title Development-Information (#{model.class.name})
     - model.attributes.each do |k, v|
       %div{:class=>cycle("odd", "even")}
         %span.attribute= k

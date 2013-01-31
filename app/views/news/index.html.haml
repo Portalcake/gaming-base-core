@@ -1,5 +1,5 @@
 .box
-  %span.title Latest Gaming-Base news
+  .title Latest Gaming-Base news
   .news.gaming_base
     - @news[:gaming_base].each do |news|
       = render :partial=>"/news/news", :locals => { :news => news }
@@ -7,7 +7,7 @@
       No entries found
 
 .box
-  %span.title Latest game news
+  .title Latest game news
   .news.gaming_base
     - @news[:games].each do |news|
       = render :partial=>"/news/news", :locals => { :news => news }

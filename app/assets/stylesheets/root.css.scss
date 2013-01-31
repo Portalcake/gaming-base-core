@@ -245,8 +245,6 @@ span.booleanize_true {
   }
   .box_right, .box_left {
     width:49%;
-    display:inline-block;
-
   }
 }
 
@@ -256,13 +254,16 @@ span.booleanize_true {
   padding:2px;
   border: 1px solid #E0E0E0;
   border-radius: 2px;
-  & span.title {
-    background: #F7F7F7;
+  & > .title {
+    background: #E4E4E4;
     font-weight: bold;
-    padding-right: 5px;
+    padding: 1px;
+    margin-bottom: 2px;
   }
   .tools {
     float:right;
+    padding-right: 3px;
+    padding-top: 1px;
   }
 }
 
