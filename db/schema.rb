@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130126085432) do
+ActiveRecord::Schema.define(:version => 20130201161934) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -265,6 +265,27 @@ ActiveRecord::Schema.define(:version => 20130126085432) do
   add_index "ragnarok2_craft_materials", ["craft_info_id"], :name => "index_ragnarok2_craft_materials_on_craft_info_id"
   add_index "ragnarok2_craft_materials", ["item_id"], :name => "index_ragnarok2_craft_materials_on_item_id"
   add_index "ragnarok2_craft_materials", ["material_id"], :name => "index_ragnarok2_craft_materials_on_material_id"
+
+  create_table "ragnarok2_dungeon_quests", :force => true do |t|
+    t.integer  "quest_id",                   :null => false
+    t.integer  "dungeon_id"
+    t.string   "mission_name"
+    t.integer  "missiontype1"
+    t.integer  "missionvalue1", :limit => 8
+    t.integer  "missiontype2"
+    t.integer  "missionvalue2", :limit => 8
+    t.integer  "missiontype3"
+    t.integer  "missionvalue3", :limit => 8
+    t.integer  "missiontype4"
+    t.integer  "missionvalue4", :limit => 8
+    t.integer  "missiontype5"
+    t.integer  "missionvalue5", :limit => 8
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "ragnarok2_dungeon_quests", ["dungeon_id"], :name => "index_ragnarok2_dungeon_quests_on_dungeon_id"
+  add_index "ragnarok2_dungeon_quests", ["quest_id"], :name => "index_ragnarok2_dungeon_quests_on_quest_id", :unique => true
 
   create_table "ragnarok2_dungeons", :force => true do |t|
     t.integer  "dungeon_id",                    :default => 0, :null => false
