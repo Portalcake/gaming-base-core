@@ -11,7 +11,7 @@ class VDKUnpacker < Unpacker
     log "Found #{filecount = @file.read(4).unpack("l").first} files in archive"
     @file.seek(28) #dummy?
 
-    while (e = read_header) && !@file.eof?
+    while !@file.eof? && (e = read_header)
       if e[:file_type]==1
         read_directory(:dirname => "#{@dest}/#{subfolder}/#{e[:name]}", :offset=>e[:offset])
       else
@@ -68,8 +68,10 @@ class VDKUnpacker < Unpacker
 
   def extract_file(dirname, opts)
       begin
+        data = @file.read(opts[:size_compressed])
+        return if opts[:name].match /\0/
         File.open("#{dirname}/#{opts[:name]}", "wb") do |f|
-          f.write(zlib_inflate(@file.read(opts[:size_compressed])))
+          f.write(zlib_inflate(data))
           puts "#{dirname}/#{opts[:name]}"
         end
       rescue Zlib::DataError, Zlib::BufError

@@ -42,6 +42,9 @@ gem 'rdiscount', '~> 1.6'
 #bbcode
 gem 'bb-ruby', '~> 0.9'
 
+#for mass-import of new records
+gem 'activerecord-import', '~> 0.3'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
