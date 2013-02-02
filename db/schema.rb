@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202150552) do
+ActiveRecord::Schema.define(:version => 20130202174143) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -425,6 +425,7 @@ ActiveRecord::Schema.define(:version => 20130202150552) do
     t.datetime "updated_at",                                          :null => false
     t.integer  "weapon_type"
     t.integer  "item_break_result_id"
+    t.integer  "socket_groupid"
   end
 
   add_index "ragnarok2_items", ["high_category_id", "medium_category_id", "low_category_id"], :name => "categories_indices"
