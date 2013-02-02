@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201161934) do
+ActiveRecord::Schema.define(:version => 20130202150552) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -265,6 +265,14 @@ ActiveRecord::Schema.define(:version => 20130201161934) do
   add_index "ragnarok2_craft_materials", ["craft_info_id"], :name => "index_ragnarok2_craft_materials_on_craft_info_id"
   add_index "ragnarok2_craft_materials", ["item_id"], :name => "index_ragnarok2_craft_materials_on_item_id"
   add_index "ragnarok2_craft_materials", ["material_id"], :name => "index_ragnarok2_craft_materials_on_material_id"
+
+  create_table "ragnarok2_craft_scrolls", :force => true do |t|
+    t.integer "item_id",       :limit => 8, :null => false
+    t.integer "craft_info_id",              :null => false
+  end
+
+  add_index "ragnarok2_craft_scrolls", ["craft_info_id"], :name => "index_ragnarok2_craft_scrolls_on_craft_info_id"
+  add_index "ragnarok2_craft_scrolls", ["item_id"], :name => "index_ragnarok2_craft_scrolls_on_item_id"
 
   create_table "ragnarok2_dungeon_quests", :force => true do |t|
     t.integer  "quest_id",                   :null => false
