@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202174143) do
+ActiveRecord::Schema.define(:version => 20130202180901) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -377,6 +377,34 @@ ActiveRecord::Schema.define(:version => 20130202174143) do
   end
 
   add_index "ragnarok2_item_sets", ["set_id"], :name => "index_ragnarok2_item_sets_on_set_id", :unique => true
+
+  create_table "ragnarok2_item_socket_groups", :force => true do |t|
+    t.integer  "socket_group_id",     :null => false
+    t.integer  "socket_type1"
+    t.integer  "string_socket_name1"
+    t.string   "close_icon1"
+    t.string   "open_icon1"
+    t.integer  "socket_type2"
+    t.integer  "string_socket_name2"
+    t.string   "close_icon2"
+    t.string   "open_icon2"
+    t.integer  "socket_type3"
+    t.integer  "string_socket_name3"
+    t.string   "close_icon3"
+    t.string   "open_icon3"
+    t.integer  "socket_type4"
+    t.integer  "string_socket_name4"
+    t.string   "close_icon4"
+    t.string   "open_icon4"
+    t.integer  "socket_type5"
+    t.integer  "string_socket_name5"
+    t.string   "close_icon5"
+    t.string   "open_icon5"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "ragnarok2_item_socket_groups", ["socket_group_id"], :name => "index_ragnarok2_item_socket_groups_on_socket_group_id", :unique => true
 
   create_table "ragnarok2_items", :force => true do |t|
     t.integer  "item_id",                 :limit => 8, :default => 0, :null => false
