@@ -1,0 +1,22 @@
+- return unless q && q.respond_to?(:searchables)
+.box.searchable_form
+  .title Search
+
+  - params[:q] ||= {}
+  = form_tag '', method: :get do
+    - q.searchables.each do |s|
+      %div{:class=>s[:key]}
+        .label= label_tag "q[#{s[:key]}]", t("searchable.attributes.#{q.to_s.underscore}.#{s[:key]}")
+        .input
+          - case s[:as]
+            - when :string
+              = text_field_tag "q[#{s[:key]}]", params[:q][s[:key]]
+            - when :integer
+              = number_field_tag "q[#{s[:key]}]", params[:q][s[:key]]
+            - when :collection
+              - next unless s[:collection]
+              = select :q, s[:key], s[:collection].call, (s[:collection_options] || {})
+            - else
+              %i unsupported
+    = submit_tag "Search"
+    = link_to "Clear filter", params.except(:q, :page, :commit, :utf8)

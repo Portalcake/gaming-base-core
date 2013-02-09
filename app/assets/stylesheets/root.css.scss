@@ -32,8 +32,25 @@ input, textarea, select {
   background: none repeat scroll 0 0 #f2f2f2;
   color: #333333 }
 
+
 form .actions input {
   padding:1px 3px 1px 3px;
+}
+
+.searchable_form {
+  form > div {
+    padding-bottom: 2px;
+    overflow: auto;
+    & > .label {
+      float:left;
+    }
+    & > .input {
+      margin-left:140px;
+    }
+  }
+  input[type="number"] {
+    width:30px;
+  }
 }
 
 #header {
