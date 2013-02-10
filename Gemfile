@@ -45,23 +45,10 @@ gem 'bb-ruby', '~> 0.9'
 #for mass-import of new records
 gem 'activerecord-import', '~> 0.3'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  #normalize browser behavior (like reset.css does)
-  gem 'normalize-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-end
+#advanced active record queries
+gem 'squeel', '~> 1.0'
 
 gem 'jquery-rails'
-
 
 #subpages
 gem 'forum', :path => "subpages/forum"
@@ -84,3 +71,22 @@ gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  #normalize browser behavior (like reset.css does)
+  gem 'normalize-rails'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', :platforms => :ruby
+
+  gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem "rails-i18n-debug"
+end
