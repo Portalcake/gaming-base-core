@@ -24,6 +24,12 @@ h2 {
 a {
   color: #4A630F;
   text-decoration: none;
+  &[target="_blank"] {
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    padding-right: 10px;
+    background-image: url("icons/target_blank.png");
+  }
   &:hover {
     color: #AA0000; } }
   
