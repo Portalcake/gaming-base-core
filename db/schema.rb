@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202180901) do
+ActiveRecord::Schema.define(:version => 20130212110302) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -582,6 +582,17 @@ ActiveRecord::Schema.define(:version => 20130202180901) do
 
   add_index "ragnarok2_map_dungeons", ["dungeon_id", "map_id"], :name => "index_ragnarok2_map_dungeons_on_dungeon_id_and_map_id", :unique => true
   add_index "ragnarok2_map_dungeons", ["map_id"], :name => "index_ragnarok2_map_dungeons_on_map_id"
+
+  create_table "ragnarok2_map_images", :force => true do |t|
+    t.integer  "map_id",             :null => false
+    t.integer  "map_part"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "ragnarok2_map_images", ["map_id"], :name => "index_ragnarok2_map_images_on_map_id"
 
   create_table "ragnarok2_maps", :force => true do |t|
     t.integer  "map_id",           :default => 0, :null => false
