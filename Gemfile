@@ -88,5 +88,5 @@ group :assets do
 end
 
 group :development do
-  gem "rails-i18n-debug"
+  #gem "rails-i18n-debug"
 end

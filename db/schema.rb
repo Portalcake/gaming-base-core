@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212110302) do
+ActiveRecord::Schema.define(:version => 20130212162616) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -961,6 +961,17 @@ ActiveRecord::Schema.define(:version => 20130212110302) do
   add_index "ragnarok2_skills", ["skill_level"], :name => "index_ragnarok2_skills_on_skill_level"
   add_index "ragnarok2_skills", ["string_skill_description"], :name => "index_ragnarok2_skills_on_string_skill_description"
   add_index "ragnarok2_skills", ["string_skill_name"], :name => "index_ragnarok2_skills_on_string_skill_name"
+
+  create_table "ragnarok2_spawn_points", :force => true do |t|
+    t.integer "map_id",                  :null => false
+    t.float   "pos_x",                   :null => false
+    t.float   "pos_y",                   :null => false
+    t.float   "pos_z",                   :null => false
+    t.integer "citizen_id", :limit => 8, :null => false
+  end
+
+  add_index "ragnarok2_spawn_points", ["citizen_id"], :name => "index_ragnarok2_spawn_points_on_citizen_id"
+  add_index "ragnarok2_spawn_points", ["map_id"], :name => "index_ragnarok2_spawn_points_on_map_id"
 
   create_table "ragnarok2_traits", :force => true do |t|
     t.integer  "item_id",      :null => false

@@ -157,7 +157,6 @@ GEM
       activesupport (= 3.2.12)
       bundler (~> 1.0)
       railties (= 3.2.12)
-    rails-i18n-debug (1.0.0)
     railties (3.2.12)
       actionpack (= 3.2.12)
       activesupport (= 3.2.12)
@@ -244,7 +243,6 @@ DEPENDENCIES
   paperclip-meta (~> 0.4)
   ragnarok2!
   rails (= 3.2.12)
-  rails-i18n-debug
   rdiscount (~> 1.6)
   rose!
   rvm-capistrano

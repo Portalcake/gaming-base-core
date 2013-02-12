@@ -17,8 +17,18 @@ class FileExtractor_tbl < FileExtractor
   private
 
   def analyze
-    @file.read(2) #dummy
-    lines = @file.read.split("\x0A\x00")
+    data = @file.read
+
+    if data.starts_with?("\xFF\xFE")
+      with_utf_16le(data)
+    else
+      with_utf_8(data)
+    end
+  end
+
+  #used for string-translations
+  def with_utf_16le(data)
+    lines = data.split("\x0A\x00")
     #header must be on one line.. would be horrible if not
     @header = lines.shift.chomp.encode('UTF-8', 'UTF-16LE').split("\t").map(&:chomp)
 
@@ -42,6 +52,22 @@ class FileExtractor_tbl < FileExtractor
       when 1
         raise "There is something terrible wrong with this tbl... #{cells}"
       end
+    end
+  end
+
+  #used for spawns
+  def with_utf_8(data)
+    lines = data.split("\r\n")
+    #header must be on one line.. would be horrible if not
+    lines.shift if lines.first.starts_with? "Total Anchors"
+    @header = lines.shift.chomp.split("\t").map(&:chomp)
+
+    while line = lines.shift
+      cells = line.split("\t").map(&:chomp)
+      while cells.length < @header.length
+        cells << nil
+      end
+      @data << cells
     end
   end
 
