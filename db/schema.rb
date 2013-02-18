@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212162616) do
+ActiveRecord::Schema.define(:version => 20130218191613) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -405,6 +405,14 @@ ActiveRecord::Schema.define(:version => 20130212162616) do
   end
 
   add_index "ragnarok2_item_socket_groups", ["socket_group_id"], :name => "index_ragnarok2_item_socket_groups_on_socket_group_id", :unique => true
+
+  create_table "ragnarok2_item_upgrade_infos", :force => true do |t|
+    t.integer "item_id",         :limit => 8
+    t.integer "upgrade_info_id", :limit => 8
+  end
+
+  add_index "ragnarok2_item_upgrade_infos", ["item_id"], :name => "index_ragnarok2_item_upgrade_infos_on_item_id"
+  add_index "ragnarok2_item_upgrade_infos", ["upgrade_info_id"], :name => "index_ragnarok2_item_upgrade_infos_on_upgrade_info_id"
 
   create_table "ragnarok2_items", :force => true do |t|
     t.integer  "item_id",                 :limit => 8, :default => 0, :null => false
@@ -1122,6 +1130,28 @@ ActiveRecord::Schema.define(:version => 20130212162616) do
   end
 
   add_index "ragnarok2_translations_trait_names", ["trait_id"], :name => "tid", :unique => true
+
+  create_table "ragnarok2_upgrade_infos", :force => true do |t|
+    t.integer "result_id",                    :limit => 8
+    t.integer "upgrade_level"
+    t.integer "normalabilityuppercent"
+    t.integer "need_zenny"
+    t.integer "need_normal_material_id",      :limit => 8
+    t.integer "need_normal_material_amount"
+    t.integer "normalenforcerate"
+    t.integer "normalenforcesuccess"
+    t.integer "normalenforcefailed"
+    t.integer "need_special_material_id",     :limit => 8
+    t.integer "need_special_material_amount"
+    t.integer "specialenforcerate"
+    t.integer "specialenforcesuccess"
+    t.integer "specialenforcefailed"
+  end
+
+  add_index "ragnarok2_upgrade_infos", ["need_normal_material_id"], :name => "index_ragnarok2_upgrade_infos_on_need_normal_material_id"
+  add_index "ragnarok2_upgrade_infos", ["need_special_material_id"], :name => "index_ragnarok2_upgrade_infos_on_need_special_material_id"
+  add_index "ragnarok2_upgrade_infos", ["result_id"], :name => "index_ragnarok2_upgrade_infos_on_result_id"
+  add_index "ragnarok2_upgrade_infos", ["upgrade_level"], :name => "index_ragnarok2_upgrade_infos_on_upgrade_level"
 
   create_table "roles", :force => true do |t|
     t.string   "name",       :null => false
