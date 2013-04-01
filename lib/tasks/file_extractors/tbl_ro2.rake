@@ -19,8 +19,8 @@ class FileExtractor_tbl < FileExtractor
   def analyze
     data = @file.read
 
-    if data.starts_with?("\xFF\xFE")
-      with_utf_16le(data)
+    if data[0..1].force_encoding("UTF-8")=="\xFF\xFE"
+      with_utf_16le(data[2..-1])
     else
       with_utf_8(data)
     end
@@ -28,14 +28,14 @@ class FileExtractor_tbl < FileExtractor
 
   #used for string-translations
   def with_utf_16le(data)
-    lines = data.split("\x0A\x00")
+    data = data.force_encoding('UTF-16LE').encode('UTF-8', 'UTF-16LE')
+    lines = data.split("\r\n")
     #header must be on one line.. would be horrible if not
-    @header = lines.shift.chomp.encode('UTF-8', 'UTF-16LE').split("\t").map(&:chomp)
+    @header = lines.shift.chomp.split("\t").map(&:chomp)
 
     cells = []
     while line = lines.shift
-      line = line.encode('UTF-8', 'UTF-16LE')
-
+      #line = line.encode('UTF-8', 'UTF-16LE')
       unless cells.empty?
         #found a typo, last value is broken over two lines, need to be concatenated
         line = cells.last + line
@@ -43,7 +43,7 @@ class FileExtractor_tbl < FileExtractor
       end
 
       #values specified as "0" are nil-values
-      cells << line.split("\t").map(&:chomp).collect{|value| value=="0" ? nil : value}
+      cells << line.split("\t", -1).map(&:chomp).collect{|value| value=="0" ? nil : value}
       cells.flatten!
       case cells.length <=> @header.length
       when 0

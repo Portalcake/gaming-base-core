@@ -16,8 +16,6 @@ class FileExtractor
   end
 
   def log(s)
-    #return unless !s.scan(/:\s1540(\s|$)/i).empty? && @settings[:debug]
-    #puts "#{@filepath} #{s}"
     puts s if @settings[:debug]
   end
 
