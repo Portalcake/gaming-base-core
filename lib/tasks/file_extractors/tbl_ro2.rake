@@ -31,14 +31,14 @@ class FileExtractor_tbl < FileExtractor
     data = data.force_encoding('UTF-16LE').encode('UTF-8', 'UTF-16LE')
     lines = data.split("\r\n")
     #header must be on one line.. would be horrible if not
-    @header = lines.shift.chomp.split("\t").map(&:chomp)
+    @header = lines.shift.chomp.split("\t", -1).map(&:chomp)
 
     cells = []
     while line = lines.shift
       #line = line.encode('UTF-8', 'UTF-16LE')
       unless cells.empty?
         #found a typo, last value is broken over two lines, need to be concatenated
-        line = cells.last + line
+        line = (cells.last || "") + line
         cells.pop
       end
 
@@ -47,12 +47,13 @@ class FileExtractor_tbl < FileExtractor
       cells.flatten!
       case cells.length <=> @header.length
       when 0
-        @data << cells
+        @data << cells.delete_if{|value| value==""}
         cells = []
       when 1
         raise "There is something terrible wrong with this tbl... #{cells}"
       end
     end
+    @header = @header.delete_if{|value| value==""}
   end
 
   #used for spawns

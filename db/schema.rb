@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218191613) do
+ActiveRecord::Schema.define(:version => 20130501101658) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -962,6 +962,8 @@ ActiveRecord::Schema.define(:version => 20130218191613) do
     t.integer  "string_skill_description",     :limit => 8
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+    t.float    "skill_duration"
+    t.float    "skill_tick_cycle"
   end
 
   add_index "ragnarok2_skills", ["skill_group_id"], :name => "index_ragnarok2_skills_on_skill_group_id"
