@@ -2,17 +2,13 @@ Gamingbase::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
-
-  ActionMailer::Base.smtp_settings = {
-#    :address => "smtp.gmail.com",
-#    :enable_starttls_auto => true,
-#    :port => 587,
-#    :authentication => :plain,
-#    :user_name => "user@domain.com",
-#    :password => 'password',
-     :openssl_verify_mode => 'none'
-  }
+  config.action_mailer.delivery_method = :sendmail
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   :location => '/usr/sbin/sendmail',
+  #   :arguments => '-i -t'
+  # }
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { :host => 'gaming-base.net' }
 
   # Code is not reloaded between requests
