@@ -15,6 +15,10 @@ class UserPermit < CanTango::UserPermit
     can :create, [Forum::Topic, Forum::Post]
 
     can [:create, :vote], Ragnarok2::CitizenDrop
+
+    can :show, News do |news|
+      news.published?
+    end
   end
 
   module Cached

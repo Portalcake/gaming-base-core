@@ -11,6 +11,7 @@ set :use_sudo, false
 set :branch, 'master'
 set :scm_verbose, true
 set :rvm_type, :system
+set :rvm_path, "/usr/local/rvm"
 
 set :available_subpages, [
   {
