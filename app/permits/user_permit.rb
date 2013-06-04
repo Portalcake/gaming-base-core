@@ -7,10 +7,10 @@ class UserPermit < CanTango::UserPermit
 
   def permit_rules
     can :update, Forum::Topic do |t|
-      t.user = user
+      t.user == user
     end
     can :update, Forum::Post do |t|
-      t.user = user
+      t.user == user
     end
     can :create, [Forum::Topic, Forum::Post]
 
