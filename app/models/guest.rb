@@ -5,17 +5,15 @@ class Guest
 
   attr_accessor :name, :email, :password, :password_confirmation, :remember_me
   def initialize
-    # basic config of guest user!
     self.name = "Guest"
     self.email = "guest@example.com"
   end
 
-  def create options = {}
-    # new instance and set valid attributes?
+  def create(options={})
   end
 
-  def has_role? role
-    role.to_sym == :guest
+  def roles_list(dummy=nil)
+    [:guest]
   end
 
   def persisted?

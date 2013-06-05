@@ -1,4 +1,4 @@
-class GuestPermit < CanTango::UserPermit
+class GuestRolePermit < CanTango::RolePermit
   def initialize ability
     super
   end
