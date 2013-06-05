@@ -55,6 +55,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize!(type, object)
-    raise CanCan::AccessDenied unless user_can?(type, object)
+    type = [type] unless type.kind_of? Array
+    type.each do |t|
+      raise CanCan::AccessDenied unless user_can?(t, object)
+    end
   end
 end
