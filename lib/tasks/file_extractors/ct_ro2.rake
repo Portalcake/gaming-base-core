@@ -3,12 +3,12 @@
 # Fileinfo *.ct
 # 
 # [64] Header "RO2!2012-11-27 14:17:32\x00*"
-# [4, unint] amount_columns
+# [4, uint] amount_columns
 # each amount_columns
-#   [4, unint] column_name_length
+#   [4, uint] column_name_length
 #   [2*column_name_length, string] column_name
 # 
-# [4, unint] amount_columns (again)
+# [4, uint] amount_columns (again)
 # each amount_columns
 #   [4, uint] column_type of column i
 #   
