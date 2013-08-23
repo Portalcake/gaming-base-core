@@ -1,2 +1,26 @@
 == Gaming-Base
+Webpage: www.gaming-base.net
+
 This project rocks and uses MIT-LICENSE.
+
+=== Modules
+
+This project consists of currently of the following modules:
+* Core webpage (this repository)
+* Forum as "forum" (flauschbaellchen/gaming-base-forum)
+* Game Ragnarok2 as "game-ro2" (flauschbaellchen/gaming-base-ro2)
+* Game Rose as "game-rose" (flauschbaellchen/gaming-base-rose)
+
+== Install/Development
+
+1. The forum, game-ro2 and game-rose need to be checked out in the subpages/ subfolder.
+2. bundle install
+3. rake db:setup or rake db:create + rake db:migrate and rake db:seed
+
+== Ragnarok2
+1. Install Ragnarok2 on a maschine and let the launcher update all game-files.
+2. Copy the *.vdk files in data/ to the share/gameclients/ro2 folder.
+3. Run rake ragnarok2:update_with_extract
+
+== Rose
+DOC:TODO
