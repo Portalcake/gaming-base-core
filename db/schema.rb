@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501101658) do
+ActiveRecord::Schema.define(:version => 20130823145653) do
 
   create_table "forum_posts", :force => true do |t|
     t.integer  "user_id"
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20130501101658) do
     t.integer  "pvp_point"
     t.datetime "created_at",                                              :null => false
     t.datetime "updated_at",                                              :null => false
+    t.integer  "siege_mapid"
   end
 
   add_index "ragnarok2_citizens", ["citizen_id"], :name => "index_ragnarok2_citizens_on_citizen_id", :unique => true
@@ -462,6 +463,7 @@ ActiveRecord::Schema.define(:version => 20130501101658) do
     t.integer  "weapon_type"
     t.integer  "item_break_result_id"
     t.integer  "socket_groupid"
+    t.integer  "possession_max"
   end
 
   add_index "ragnarok2_items", ["high_category_id", "medium_category_id", "low_category_id"], :name => "categories_indices"
@@ -835,6 +837,10 @@ ActiveRecord::Schema.define(:version => 20130501101658) do
     t.integer  "fail_desc_id"
     t.datetime "created_at",                                       :null => false
     t.datetime "updated_at",                                       :null => false
+    t.integer  "reward_item_id6",      :limit => 8
+    t.integer  "reward_item_count6"
+    t.integer  "reward_item_id7",      :limit => 8
+    t.integer  "reward_item_count7"
   end
 
   add_index "ragnarok2_quests", ["area_id"], :name => "index_ragnarok2_quests_on_area_id"
@@ -880,7 +886,7 @@ ActiveRecord::Schema.define(:version => 20130501101658) do
   add_index "ragnarok2_set_traits", ["set_id"], :name => "index_ragnarok2_set_traits_on_set_id"
 
   create_table "ragnarok2_skill_groups", :force => true do |t|
-    t.integer  "skill_group",            :limit => 8, :null => false
+    t.integer  "skill_group",              :limit => 8, :null => false
     t.string   "name_fallback"
     t.string   "skill_icon"
     t.integer  "ui_property"
@@ -903,9 +909,9 @@ ActiveRecord::Schema.define(:version => 20130501101658) do
     t.integer  "skill_element_type"
     t.integer  "need_base_level"
     t.integer  "need_skill_up_level"
-    t.integer  "need_before_skill_id_1", :limit => 8
-    t.integer  "need_before_skill_id_2", :limit => 8
-    t.integer  "need_before_skill_id_3", :limit => 8
+    t.integer  "need_before_skill_id_1",   :limit => 8
+    t.integer  "need_before_skill_id_2",   :limit => 8
+    t.integer  "need_before_skill_id_3",   :limit => 8
     t.integer  "targeting_object"
     t.integer  "targeting_actor_id"
     t.integer  "equip_weapon"
@@ -927,8 +933,12 @@ ActiveRecord::Schema.define(:version => 20130501101658) do
     t.float    "influence_bound_length"
     t.float    "influence_bound_width"
     t.float    "attack_time"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.boolean  "be_attacked_cancel"
+    t.boolean  "is_auto_direction_switch"
+    t.integer  "sub_targeting_object"
+    t.string   "targeting_map_id"
   end
 
   add_index "ragnarok2_skill_groups", ["name_fallback"], :name => "index_ragnarok2_skill_groups_on_name_fallback"
@@ -1134,24 +1144,21 @@ ActiveRecord::Schema.define(:version => 20130501101658) do
   add_index "ragnarok2_translations_trait_names", ["trait_id"], :name => "tid", :unique => true
 
   create_table "ragnarok2_upgrade_infos", :force => true do |t|
-    t.integer "result_id",                    :limit => 8
+    t.integer "result_id",                   :limit => 8
     t.integer "upgrade_level"
     t.integer "normalabilityuppercent"
     t.integer "need_zenny"
-    t.integer "need_normal_material_id",      :limit => 8
+    t.integer "need_normal_material_id",     :limit => 8
     t.integer "need_normal_material_amount"
     t.integer "normalenforcerate"
     t.integer "normalenforcesuccess"
     t.integer "normalenforcefailed"
-    t.integer "need_special_material_id",     :limit => 8
-    t.integer "need_special_material_amount"
     t.integer "specialenforcerate"
     t.integer "specialenforcesuccess"
     t.integer "specialenforcefailed"
   end
 
   add_index "ragnarok2_upgrade_infos", ["need_normal_material_id"], :name => "index_ragnarok2_upgrade_infos_on_need_normal_material_id"
-  add_index "ragnarok2_upgrade_infos", ["need_special_material_id"], :name => "index_ragnarok2_upgrade_infos_on_need_special_material_id"
   add_index "ragnarok2_upgrade_infos", ["result_id"], :name => "index_ragnarok2_upgrade_infos_on_result_id"
   add_index "ragnarok2_upgrade_infos", ["upgrade_level"], :name => "index_ragnarok2_upgrade_infos_on_upgrade_level"
 
