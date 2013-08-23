@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
       :uniqueness => { :case_sensitive => false },
       :length => { :minimum => 3, :maximum => 24 },
       :allow_blank => false,
-      :format => { :with => /^[a-z0-9]+(\s[a-z0-9]+)*$/i }
+      :format => { :with => /\A[a-z0-9]+(\s[a-z0-9]+)*\z/i }
 
   before_save { self.email = email.downcase }
 
