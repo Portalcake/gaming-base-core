@@ -14,3 +14,4 @@ config/database.yml
 share/gameclients/*/
 subpages/
 public/games
+.env

@@ -86,6 +86,9 @@ GEM
     devise-encryptable (0.1.2)
       devise (>= 2.1.0)
     devise-i18n (0.9.0)
+    dotenv (0.8.0)
+    dotenv-rails (0.8.0)
+      dotenv (= 0.8.0)
     erubis (2.7.0)
     execjs (2.0.0)
     feedzirra (0.0.31)
@@ -227,6 +230,7 @@ DEPENDENCIES
   devise (~> 2.1)
   devise-encryptable
   devise-i18n
+  dotenv-rails
   feedzirra (~> 0.0)
   formtastic (~> 2.0)
   forum!

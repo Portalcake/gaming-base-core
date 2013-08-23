@@ -69,6 +69,8 @@ gem 'rose', :path => "subpages/game-rose"
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+gem 'dotenv-rails'
+
 # To use debugger
 # gem 'debugger'
 
