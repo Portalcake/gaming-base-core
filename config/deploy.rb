@@ -42,9 +42,6 @@ set :subpages_base_repository, "file:///home/gaming-base-dev/public_html/git/%su
 
 server "gaming-base.net", :app, :web, :db, :primary => true, :port => 42, :user => "gaming-base"
 
-# if you want to clean up old releases on each deploy uncomment this:
-after "deploy:restart", "deploy:cleanup"
-
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 
@@ -102,11 +99,27 @@ namespace :subpages do
   end
 end
 
+namespace :dotenv do
+  desc "Touch .env configuration file. Be sure to take a look at it!"
+  task :setup, :except => { :no_release => true } do
+    run "touch #{shared_path}/.env"
+  end
+  
+  desc "Generate symlink for database configuration file" 
+  task :symlink, :except => { :no_release => true } do
+    run "ln -nfs #{shared_path}/.env #{release_path}/.env" 
+  end
+end
+
 after "deploy:setup", "db:setup"
 after "deploy:setup", "gameclients:setup"
 after "deploy:setup", "games:setup"
+after "deploy:setup", "dotenv:setup"
+after "deploy:finalize_update", "dotenv:symlink"
 after "deploy:finalize_update", "db:symlink"
 after "whenever:update_crontab", "gameclients:symlink"
 after "whenever:update_crontab", "subpages:setup"
 after "deploy:finalize_update", "games:symlink"
 after "deploy", "deploy:migrate"
+
+after "deploy:restart", "deploy:cleanup"
