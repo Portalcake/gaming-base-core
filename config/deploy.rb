@@ -3,8 +3,7 @@ require 'bundler/capistrano' #use bundler
 require 'rvm/capistrano' #use bundler
 
 set :application, "gaming-base"
-set :repository,  "file:///home/gaming-base-dev/public_html/git/gaming-base.git"
-set :local_repository,  "http://git.gaming-base.net/gaming-base.git"
+set :repository,  "git@github.com:Flauschbaellchen/gaming-base-core.git"
 set :scm, :git
 set :deploy_to, "/home/gaming-base/rails/#{application}"
 set :use_sudo, false
@@ -16,21 +15,24 @@ set :rvm_path, "/usr/local/rvm"
 set :available_subpages, [
   {
     :token => "game-ro2",
+    :git => "gaming-base-ro2",
     :engine => "ragnarok2",
     :active => true
   },
   {
     :token => "game-rose",
+    :git => "gaming-base-rose",
     :engine => "rose",
     :active => true
   },
   {
     :token => "forum",
+    :git => "gaming-base-forum",
     :engine => "forum",
     :active => true
   }
 ]
-set :subpages_base_repository, "file:///home/gaming-base-dev/public_html/git/%subpage_token%.git"
+set :subpages_base_repository, "git@github.com:Flauschbaellchen/%subpage_git_token%.git"
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -94,7 +96,7 @@ namespace :subpages do
   task :setup, :except => { :no_release => true } do
     available_subpages.each do |subopts|
       run "mkdir -p #{release_path}/subpages/#{subopts[:token]}"
-      run "cd #{release_path}/subpages/#{subopts[:token]} && git clone #{subpages_base_repository.gsub("%subpage_token%", subopts[:token])} ." if subopts[:active]
+      run "cd #{release_path}/subpages/#{subopts[:token]} && git clone #{subpages_base_repository.gsub("%subpage_git_token%", subopts[:git])} ." if subopts[:active]
     end
   end
 end
