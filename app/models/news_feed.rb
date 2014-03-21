@@ -16,7 +16,7 @@ class NewsFeed < ActiveRecord::Base
   def self.update!
     NewsFeed.all.each do |news_feed|
       begin
-        feed = Feedzirra::Feed.fetch_and_parse(news_feed.feed_url, :timeout => 30)
+        feed = Feedjira::Feed.fetch_and_parse(news_feed.feed_url, :timeout => 30)
         if feed.is_a?(Fixnum)
           news_feed.last_error = "#{Time.now} :: Error: #{feed}"
           return

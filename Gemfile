@@ -35,7 +35,7 @@ gem 'simple-navigation', '~> 3.10'
 gem 'mini_magick', '~> 3.4'
 
 #rss/feed parser
-gem 'feedzirra', '~> 0.0'
+gem 'feedjira', '~> 1.0'
 
 #markdown requirement
 gem 'rdiscount', '~> 1.6'
